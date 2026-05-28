@@ -274,7 +274,7 @@ export const dashboardRoutes: Record<string, RouteConfig> = {
   },
 }
 
-const defaultRoute = "/dashboard/home"
+const defaultRoute = "/signup/combined"
 
 function matchDynamicRoute(path: string): RouteConfig | null {
   if (path.startsWith("/dashboard/settings/appointment-types/edit/")) {
