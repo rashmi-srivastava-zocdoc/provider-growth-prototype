@@ -189,7 +189,7 @@ export function JoinPage() {
               Talk with Sales
             </button>
             <button
-              onClick={onGetStarted}
+              onClick={() => navigate("/signup/combined")}
               className="h-12 px-5 bg-[#FEED5A] rounded text-base font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
             >
               Get started
