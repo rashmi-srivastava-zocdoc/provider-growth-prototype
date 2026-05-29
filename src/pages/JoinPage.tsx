@@ -152,7 +152,7 @@ export function JoinPage() {
   const [email, setEmail] = useState("")
   const navigate = useNavigate()
   const { practiceSolutionsEnabled } = usePracticeSolutionsMode()
-  const onGetStarted = () => navigate("/signup/combined")
+  const onGetStarted = () => navigate(email ? `/signup/combined?email=${encodeURIComponent(email)}` : "/signup/combined")
 
   return (
     <div className="h-screen w-full overflow-y-auto bg-white">

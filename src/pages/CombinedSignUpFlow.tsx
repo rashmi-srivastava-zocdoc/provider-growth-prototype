@@ -121,7 +121,10 @@ export function CombinedSignUpFlow() {
   const [step, setStep] = useState<"form" | "verify">("form")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("andrea.rodriguez@riverdalemedical.com")
+  const [email, setEmail] = useState(() => {
+    const params = new URLSearchParams(window.location.search)
+    return params.get("email") || ""
+  })
   const [editingEmail, setEditingEmail] = useState(false)
   const [password, setPassword] = useState("")
   const [practiceName, setPracticeName] = useState("")
