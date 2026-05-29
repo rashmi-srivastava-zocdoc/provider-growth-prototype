@@ -14,6 +14,8 @@ import { HeaderActionsProvider } from "@/context/HeaderActionsContext"
 import { AIPanelTrigger } from "@/components/ai-panel/AIPanelTrigger"
 import { AIPanel } from "@/components/ai-panel/AIPanel"
 import { AIAssistantPage } from "@/components/ai-panel/AIAssistantPage"
+import { PrototypeIndexPage } from "@/pages/PrototypeIndexPage"
+import { WellHiveLandingPage } from "@/pages/WellHiveLandingPage"
 import { JoinPage } from "@/pages/JoinPage"
 import { SignUpFlow } from "@/pages/SignUpFlow"
 import { CombinedSignUpFlow } from "@/pages/CombinedSignUpFlow"
@@ -274,7 +276,7 @@ export const dashboardRoutes: Record<string, RouteConfig> = {
   },
 }
 
-const defaultRoute = "/join"
+const defaultRoute = "/index"
 
 function matchDynamicRoute(path: string): RouteConfig | null {
   if (path.startsWith("/dashboard/settings/appointment-types/edit/")) {
@@ -336,7 +338,7 @@ function matchDynamicRoute(path: string): RouteConfig | null {
 }
 
 function pathToActivePage(path: string): string {
-  if (path === "/join" || path.startsWith("/signup")) return "landing"
+  if (path === "/index" || path === "/join" || path === "/wellhive" || path.startsWith("/signup")) return "landing"
   const route = dashboardRoutes[path] ?? matchDynamicRoute(path)
   if (route) return route.title
   return "Home"
@@ -394,8 +396,12 @@ function AppRoutes() {
               <AIChatProvider activePage={activePage}>
                 <IAModeProvider>
                   <TooltipProvider>
-                    {path === "/join" ? (
+                    {path === "/index" ? (
+                      <PrototypeIndexPage />
+                    ) : path === "/join" ? (
                       <JoinPage />
+                    ) : path === "/wellhive" ? (
+                      <WellHiveLandingPage />
                     ) : path === "/signup/combined" ? (
                       <CombinedSignUpFlow />
                     ) : path === "/signup/multi-step" ? (

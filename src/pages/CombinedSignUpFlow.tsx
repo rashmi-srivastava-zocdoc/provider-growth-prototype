@@ -200,7 +200,7 @@ export function CombinedSignUpFlow() {
                   onClick={handleOpenEmail}
                   className="flex items-center justify-center gap-2 w-full h-11 rounded-lg bg-[#FEED5A] text-sm font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
                 >
-                  Open email
+                  Continue
                   <ArrowRight className="size-4" />
                 </button>
               </div>
