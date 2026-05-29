@@ -97,7 +97,7 @@ export function CareAccessActivationPage() {
         </button>
         <p className="text-sm text-[rgba(51,51,51,0.35)]">&copy; 2026 Zocdoc, Inc.</p>
         <button
-          onClick={() => navigate("/dashboard/provider-growth-home?source=wellhive")}
+          onClick={() => navigate("/dashboard/post-activation")}
           className="h-11 px-8 bg-[#FEED5A] rounded text-sm font-semibold text-[#1b2228] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
         >
           Activate
