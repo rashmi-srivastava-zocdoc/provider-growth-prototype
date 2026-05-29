@@ -106,7 +106,7 @@ export function ProviderGrowthHomePage() {
                     <button
                       onClick={() => {
                         if (task.step === 5) {
-                          navigate(isWellHive ? "/care-access-activate" : "/activate")
+                          navigate(isWellHive ? "/care-access-activate" : "/dashboard/activate")
                         } else {
                           setCurrentStep(currentStep + 1)
                         }

@@ -75,9 +75,9 @@ export function UpsellPage() {
                 <button
                   onClick={() => {
                     if (product.name === "Marketplace") {
-                      navigate("/marketplace-activate")
+                      navigate("/dashboard/marketplace-activate")
                     } else if (product.name === "Practice Solutions") {
-                      navigate("/practice-solutions-activate")
+                      navigate("/dashboard/practice-solutions-activate")
                     }
                   }}
                   className="w-full inline-flex items-center justify-center gap-1.5 h-10 px-5 rounded-full bg-[#FEED5A] text-sm font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"

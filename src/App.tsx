@@ -275,6 +275,21 @@ export const dashboardRoutes: Record<string, RouteConfig> = {
     breadcrumbs: [{ label: "Settings", href: "#" }, { label: "Groups", href: "/dashboard/settings/organization" }, { label: "New group" }],
     component: GroupDetailPage,
   },
+  "/dashboard/activate": {
+    title: "Activate Bookable Presence",
+    breadcrumbs: [{ label: "Activate Bookable Presence" }],
+    component: ActivationPage,
+  },
+  "/dashboard/marketplace-activate": {
+    title: "Activate Marketplace",
+    breadcrumbs: [{ label: "Activate Marketplace" }],
+    component: MarketplaceActivation,
+  },
+  "/dashboard/practice-solutions-activate": {
+    title: "Activate Practice Solutions",
+    breadcrumbs: [{ label: "Activate Practice Solutions" }],
+    component: PracticeSolutionsActivation,
+  },
 }
 
 const defaultRoute = "/index"
@@ -411,14 +426,8 @@ function AppRoutes() {
                       <SignUpFlow key="auth" variant="two-step" authOnly />
                     ) : path.startsWith("/signup") ? (
                       <SignUpFlow key="two-step" variant="two-step" />
-                    ) : path === "/practice-solutions-activate" ? (
-                      <PracticeSolutionsActivation />
-                    ) : path === "/marketplace-activate" ? (
-                      <MarketplaceActivation />
                     ) : path === "/upsell" ? (
                       <UpsellPage />
-                    ) : path === "/activate" ? (
-                      <ActivationPage />
                     ) : path === "/care-access-activate" ? (
                       <CareAccessActivationPage />
                     ) : path === "/launch" ? (

@@ -32,8 +32,7 @@ export function MarketplaceActivation() {
   const allDone = completedTasks.length === activationTasks.length
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-[900px] mx-auto px-6 py-12">
+    <div className="max-w-[900px] mx-auto px-6 py-12">
 
         <h1 className="text-3xl font-bold text-[#1b2228] mb-2">
           Activate Zocdoc Marketplace
@@ -138,7 +137,6 @@ export function MarketplaceActivation() {
           </button>
         </div>
 
-      </div>
     </div>
   )
 }

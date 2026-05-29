@@ -124,7 +124,7 @@ export function PostActivationDashboard() {
                   Get discovered by 30M+ patients on Zocdoc and premium partner sites.
                 </p>
                 <button
-                  onClick={() => navigate("/marketplace-activate")}
+                  onClick={() => navigate("/dashboard/marketplace-activate")}
                   className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#FEED5A] text-xs font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
                 >
                   Activate
@@ -138,7 +138,7 @@ export function PostActivationDashboard() {
                   Branded booking on your website plus an AI phone assistant.
                 </p>
                 <button
-                  onClick={() => navigate("/practice-solutions-activate")}
+                  onClick={() => navigate("/dashboard/practice-solutions-activate")}
                   className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-[#FEED5A] text-xs font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
                 >
                   Activate
@@ -156,18 +156,15 @@ export function PostActivationDashboard() {
             <h2 className="text-lg font-semibold text-[#1b2228] mb-5">Performance overview</h2>
 
             {/* Total bookings */}
-            <p className="text-5xl font-bold text-[#1b2228] leading-none mb-1">734</p>
+            <p className="text-5xl font-bold text-[#1b2228] leading-none mb-1">0</p>
             <p className="text-sm font-medium text-[#1b2228]">Total bookings this month</p>
             <p className="text-xs text-[rgba(51,51,51,0.5)] mt-0.5 mb-6">
-              Compared to <span className="font-semibold text-[#1b2228]">895 bookings</span> this time last month
+              Compared to <span className="font-semibold text-[#1b2228]">0 bookings</span> this time last month
             </p>
 
             {/* Bookings by patient type */}
             <h3 className="text-base font-semibold text-[#1b2228] mb-3">Bookings by patient type</h3>
-            <div className="h-3 rounded-full overflow-hidden flex mb-4">
-              <div className="h-full bg-[#FEED5A]" style={{ width: "60%" }} />
-              <div className="h-full bg-[#60bfe8]" style={{ width: "40%" }} />
-            </div>
+            <div className="h-3 rounded-full overflow-hidden flex mb-4 bg-[rgba(47,40,28,0.06)]" />
 
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -176,8 +173,8 @@ export function PostActivationDashboard() {
                 <Info className="size-3.5 text-[rgba(51,51,51,0.3)]" />
               </div>
               <span className="text-sm">
-                <span className="font-semibold text-[#1b2228]">443</span>
-                <span className="text-[rgba(51,51,51,0.5)]"> (60%)</span>
+                <span className="font-semibold text-[#1b2228]">0</span>
+                <span className="text-[rgba(51,51,51,0.5)]"> (0%)</span>
               </span>
             </div>
 
@@ -188,8 +185,8 @@ export function PostActivationDashboard() {
                 <Info className="size-3.5 text-[rgba(51,51,51,0.3)]" />
               </div>
               <span className="text-sm">
-                <span className="font-semibold text-[#1b2228]">291</span>
-                <span className="text-[rgba(51,51,51,0.5)]"> (40%)</span>
+                <span className="font-semibold text-[#1b2228]">0</span>
+                <span className="text-[rgba(51,51,51,0.5)]"> (0%)</span>
               </span>
             </div>
 
@@ -201,7 +198,7 @@ export function PostActivationDashboard() {
             <div className="border-t border-[rgba(47,40,28,0.08)] my-6" />
 
             {/* Total reviews */}
-            <p className="text-4xl font-bold text-[#1b2228] leading-none mb-1">6317</p>
+            <p className="text-4xl font-bold text-[#1b2228] leading-none mb-1">0</p>
             <p className="text-sm font-medium text-[#1b2228] mb-3">Total reviews</p>
             <div className="flex items-center gap-4">
               <button className="text-sm font-medium text-[#1b2228] underline bg-transparent border-none cursor-pointer p-0">

@@ -23,8 +23,7 @@ export function PracticeSolutionsActivation() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-[900px] mx-auto px-6 py-12">
+    <div className="max-w-[900px] mx-auto px-6 py-12">
 
         <h1 className="text-3xl font-bold text-[#1b2228] mb-2">
           Activate Practice Solutions
@@ -89,7 +88,6 @@ export function PracticeSolutionsActivation() {
           </button>
         </div>
 
-      </div>
     </div>
   )
 }
