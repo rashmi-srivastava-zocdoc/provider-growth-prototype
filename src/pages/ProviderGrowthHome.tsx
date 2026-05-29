@@ -29,9 +29,9 @@ const setupSteps = [
   },
   {
     step: 5,
-    label: "Launch your bookable online practice",
-    description: "You're all set! Launch your practice across 30+ channels so patients can start booking with you.",
-    cta: "Launch your practice",
+    label: "Start receiving bookings through the Care Access Network",
+    description: "Patients will be able to see your availability and book appointments",
+    cta: "",
   },
 ]
 
@@ -76,6 +76,24 @@ export function ProviderGrowthHomePage() {
             )
           }
 
+          if (isActive && task.step === 5) {
+            return (
+              <div
+                key={task.step}
+                className="rounded-xl border border-[rgba(47,40,28,0.08)] bg-white px-6 py-5 flex items-center gap-5"
+              >
+                <span className="text-4xl shrink-0">🚩</span>
+                <div className="flex-1">
+                  <h3 className="text-base font-semibold text-[#1b2228]">{task.label}</h3>
+                  <p className="text-sm text-[rgba(51,51,51,0.5)] mt-0.5">{task.description}</p>
+                </div>
+                <span className="inline-flex items-center px-3 py-1 rounded text-xs font-medium text-[#4f6bed] bg-[#eef1fd] shrink-0">
+                  Processing
+                </span>
+              </div>
+            )
+          }
+
           if (isActive) {
             return (
               <div
@@ -95,11 +113,7 @@ export function ProviderGrowthHomePage() {
                   <div className="ml-10">
                     <button
                       onClick={() => {
-                        if (task.step === 5) {
-                          navigate("/activate")
-                        } else {
-                          setCurrentStep(currentStep + 1)
-                        }
+                        setCurrentStep(currentStep + 1)
                       }}
                       className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-[#FEED5A] text-sm font-semibold text-[#333] cursor-pointer border-none hover:bg-[#fde84a] transition-colors"
                     >
