@@ -23,6 +23,7 @@ import { ProviderGrowthHomePage } from "@/pages/ProviderGrowthHome"
 import { WelcomeSetupModal } from "@/pages/WelcomeSetup"
 import { LaunchExperiencePage } from "@/pages/LaunchExperience"
 import { ActivationPage } from "@/pages/ActivationPage"
+import { CareAccessActivationPage } from "@/pages/CareAccessActivation"
 import { UpsellPage } from "@/pages/UpsellPage"
 import { MarketplaceActivation } from "@/pages/MarketplaceActivation"
 import { PracticeSolutionsActivation } from "@/pages/PracticeSolutionsActivation"
@@ -418,6 +419,8 @@ function AppRoutes() {
                       <UpsellPage />
                     ) : path === "/activate" ? (
                       <ActivationPage />
+                    ) : path === "/care-access-activate" ? (
+                      <CareAccessActivationPage />
                     ) : path === "/launch" ? (
                       <LaunchExperiencePage />
                     ) : path === "/setup/google-business-profiles" ? (
