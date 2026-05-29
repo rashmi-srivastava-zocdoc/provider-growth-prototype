@@ -102,10 +102,10 @@ export function ActivationPage() {
     <div className="max-w-[900px] mx-auto px-6 py-12">
 
       <h1 className="text-3xl font-bold text-[#1b2228] mb-2">
-        Activate Bookable Presence
+        You're live on Bookable Presence
       </h1>
       <p className="text-sm text-[rgba(51,51,51,0.6)] mb-10">
-        Make it easier for patients to book with your practice on Google and 30+ channels.
+        Patients can now find and book with your practice on Google and 30+ channels.
       </p>
 
       {/* What's included */}
@@ -189,25 +189,14 @@ export function ActivationPage() {
         <GoogleConnectionCard onConnect={() => navigate("/setup/google-business-profiles")} />
       </div>
 
-      {/* Activate button */}
+      {/* Back to dashboard */}
       <div className="flex items-center gap-4">
         <button
-          onClick={() => navigate("/upsell?live")}
-          disabled={!allDone}
-          className={`inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-sm font-semibold cursor-pointer border-none transition-colors ${
-            allDone
-              ? "bg-[#FEED5A] text-[#333] hover:bg-[#fde84a]"
-              : "bg-[rgba(47,40,28,0.08)] text-[rgba(51,51,51,0.35)] cursor-not-allowed"
-          }`}
-        >
-          Activate Bookable Presence
-          <ArrowRight className="size-3.5" />
-        </button>
-        <button
           onClick={() => navigate("/dashboard/post-activation")}
-          className="text-sm font-medium text-[rgba(51,51,51,0.6)] bg-transparent border-none cursor-pointer underline"
+          className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-sm font-semibold cursor-pointer border-none transition-colors bg-[#FEED5A] text-[#333] hover:bg-[#fde84a]"
         >
           Back to dashboard
+          <ArrowRight className="size-3.5" />
         </button>
       </div>
 
