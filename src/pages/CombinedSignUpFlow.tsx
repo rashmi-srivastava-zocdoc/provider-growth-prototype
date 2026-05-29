@@ -149,7 +149,8 @@ export function CombinedSignUpFlow() {
   }
 
   const handleOpenEmail = () => {
-    navigate("/dashboard/provider-growth-home")
+    const source = new URLSearchParams(window.location.search).get("source")
+    navigate(source ? `/dashboard/provider-growth-home?source=${source}` : "/dashboard/provider-growth-home")
   }
 
   return (

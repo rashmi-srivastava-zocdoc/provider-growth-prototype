@@ -13,14 +13,14 @@ export function WellHiveLandingPage() {
         />
         {/* Clickable overlay on hero "Sign up" button */}
         <button
-          onClick={() => navigate("/signup/combined")}
+          onClick={() => navigate("/signup/combined?source=wellhive")}
           className="absolute cursor-pointer bg-transparent border-none"
           style={{ top: "44.5%", left: "26%", width: "5.5%", height: "5%" }}
           aria-label="Sign up"
         />
         {/* Clickable overlay on header "Sign up" button */}
         <button
-          onClick={() => navigate("/signup/combined")}
+          onClick={() => navigate("/signup/combined?source=wellhive")}
           className="absolute cursor-pointer bg-transparent border-none"
           style={{ top: "2.5%", left: "84%", width: "5.5%", height: "4.5%" }}
           aria-label="Sign up"
