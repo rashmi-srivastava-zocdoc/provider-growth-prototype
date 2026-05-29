@@ -141,8 +141,8 @@ export function ProviderGrowthHomePage() {
         })}
       </div>
 
-      {/* Grow your practice */}
-      <div className="rounded-xl border border-[rgba(47,40,28,0.1)] bg-white">
+      {/* Grow your practice — hidden for WellHive flow */}
+      {!isWellHive && <div className="rounded-xl border border-[rgba(47,40,28,0.1)] bg-white">
         <div className="px-6 pt-6 pb-4">
           <h2 className="text-base font-semibold text-[#1b2228]">Grow your practice with Zocdoc</h2>
           <p className="text-sm text-[rgba(51,51,51,0.5)] mt-0.5">
@@ -179,7 +179,7 @@ export function ProviderGrowthHomePage() {
             </button>
           </div>
         </div>
-      </div>
+      </div>}
 
     </div>
   )
