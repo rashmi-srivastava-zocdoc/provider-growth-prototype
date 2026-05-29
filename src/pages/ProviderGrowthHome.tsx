@@ -36,7 +36,7 @@ const setupSteps = [
 ]
 
 const wellhiveStep5 = {
-  label: "Start receiving bookings through the Care Access Network",
+  label: "Launch your Care Access presence",
   description: "Patients will be able to see your availability and book appointments",
   cta: "Launch your connection",
 }
@@ -134,7 +134,7 @@ export function ProviderGrowthHomePage() {
                 <span className="flex items-center justify-center size-7 rounded-full border border-[rgba(47,40,28,0.12)] text-xs font-medium text-[rgba(51,51,51,0.3)]">
                   {task.step}
                 </span>
-                <span className="text-sm font-medium text-[rgba(51,51,51,0.35)]">{task.label}</span>
+                <span className="text-sm font-medium text-[rgba(51,51,51,0.35)]">{(isWellHive && task.step === 5) ? wellhiveStep5.label : task.label}</span>
               </div>
             </div>
           )
