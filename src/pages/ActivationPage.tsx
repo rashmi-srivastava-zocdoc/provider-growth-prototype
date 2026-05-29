@@ -138,50 +138,6 @@ export function ActivationPage() {
         </p>
       </div>
 
-      {/* Activation tasks */}
-      <h2 className="text-lg font-semibold text-[#1b2228] mb-4">Complete to activate</h2>
-      <div className="flex flex-col gap-3 mb-10">
-        {activationTasks.map((task) => {
-          const isDone = completedTasks.includes(task.id)
-          return (
-            <button
-              key={task.id}
-              onClick={() => {
-                if (!isDone) {
-                  setCompletedTasks([...completedTasks, task.id])
-                }
-              }}
-              className="flex items-center justify-between rounded-xl border border-[rgba(47,40,28,0.08)] bg-white px-6 py-5 cursor-pointer text-left hover:bg-[rgba(47,40,28,0.02)] transition-colors"
-            >
-              <div className="flex items-center gap-4">
-                {isDone ? (
-                  <span className="flex items-center justify-center size-8 rounded-full bg-[#16a34a]">
-                    <Check className="size-4 text-white" strokeWidth={2.5} />
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center size-8 rounded-full bg-[rgba(47,40,28,0.04)]">
-                    <CreditCard className="size-4 text-[rgba(51,51,51,0.4)]" />
-                  </span>
-                )}
-                <div>
-                  <p className={`text-sm font-semibold ${isDone ? "text-[rgba(51,51,51,0.4)]" : "text-[#1b2228]"}`}>
-                    {task.label}
-                  </p>
-                  <p className="text-xs text-[rgba(51,51,51,0.5)] mt-0.5">{task.description}</p>
-                </div>
-              </div>
-              {isDone ? (
-                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-[#f0fdf4] text-xs font-medium text-[#16a34a]">
-                  Complete
-                </span>
-              ) : (
-                <ChevronRight className="size-4 text-[rgba(51,51,51,0.3)]" />
-              )}
-            </button>
-          )
-        })}
-      </div>
-
       {/* Booking link + Google connection */}
       <h2 className="text-lg font-semibold text-[#1b2228] mb-4">After you activate</h2>
       <div className="flex flex-col gap-4 mb-10">
