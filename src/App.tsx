@@ -17,6 +17,10 @@ import { AIAssistantPage } from "@/components/ai-panel/AIAssistantPage"
 import { PrototypeIndexPage } from "@/pages/PrototypeIndexPage"
 import { WellHiveLandingPage } from "@/pages/WellHiveLandingPage"
 import { JoinPage } from "@/pages/JoinPage"
+import { ConsumerHomePage } from "@/pages/ConsumerHomePage"
+import { AccountCreationPage } from "@/pages/AccountCreationPage"
+import { ConfirmPracticePage } from "@/pages/ConfirmPracticePage"
+import { PracticeDetailsQuestionsPage } from "@/pages/PracticeDetailsQuestionsPage"
 import { SignUpFlow } from "@/pages/SignUpFlow"
 import { CombinedSignUpFlow } from "@/pages/CombinedSignUpFlow"
 import { ProviderGrowthHomePage } from "@/pages/ProviderGrowthHome"
@@ -354,7 +358,7 @@ function matchDynamicRoute(path: string): RouteConfig | null {
 }
 
 function pathToActivePage(path: string): string {
-  if (path === "/index" || path === "/join" || path === "/wellhive" || path.startsWith("/signup")) return "landing"
+  if (path === "/index" || path === "/join" || path === "/wellhive" || path === "/zocdoc" || path.startsWith("/signup") || path.startsWith("/onboarding")) return "landing"
   const route = dashboardRoutes[path] ?? matchDynamicRoute(path)
   if (route) return route.title
   return "Home"
@@ -418,6 +422,14 @@ function AppRoutes() {
                       <JoinPage />
                     ) : path === "/wellhive" ? (
                       <WellHiveLandingPage />
+                    ) : path === "/zocdoc" ? (
+                      <ConsumerHomePage />
+                    ) : path === "/signup/account" ? (
+                      <AccountCreationPage />
+                    ) : path === "/onboarding/confirm-practice" ? (
+                      <ConfirmPracticePage />
+                    ) : path === "/onboarding/details" ? (
+                      <PracticeDetailsQuestionsPage />
                     ) : path === "/signup/combined" ? (
                       <CombinedSignUpFlow />
                     ) : path === "/signup/multi-step" ? (
