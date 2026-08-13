@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repositioning GA - Requirements to Tickets Mapping</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #4a90d9; color: white; }
+        tr:nth-child(even):not(.section-header) { background-color: #f9f9f9; }
+        tr:hover:not(.section-header) { background-color: #f1f1f1; }
+        .closed { color: #28a745; }
+        .in-progress, .qa { color: #fd7e14; }
+        .to-do { color: #6c757d; }
+        .parked { color: #dc3545; }
+        .gap { color: #dc3545; font-style: italic; }
+        .section-header { background-color: #2c5282 !important; color: white !important; font-weight: bold; }
+        .section-header td { padding: 10px 8px; font-size: 14px; color: white !important; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .copy-btn { background: #4a90d9; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; }
+        .copy-btn:hover { background: #357abd; }
+        #status { margin-left: 10px; color: #28a745; }
+        .links { margin-bottom: 15px; }
+        .links a { margin-right: 20px; }
+        .completion { font-weight: bold; margin-left: 10px; }
+        .completion-high { color: #90EE90 !important; }
+        .completion-medium { color: #FFD700 !important; }
+        .completion-low { color: #FF6B6B !important; }
+        .sprint { font-size: 12px; color: #666; }
+        .ticket-list { display: flex; flex-direction: column; gap: 4px; }
+        .ticket-item { display: flex; gap: 8px; align-items: center; }
+        .ticket-status { font-size: 11px; padding: 2px 6px; border-radius: 3px; }
+        .status-closed { background: #d4edda; color: #155724; }
+        .status-qa { background: #fff3cd; color: #856404; }
+        .status-progress { background: #cce5ff; color: #004085; }
+        .status-todo { background: #e2e3e5; color: #383d41; }
+        .status-parked { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Repositioning GA - PRD Requirements to Jira Tickets Mapping</h1>
+    <div class="links">
+        <strong>Epic:</strong> <a href="https://zocdoc.atlassian.net/browse/PROVGRO-7509" target="_blank">PROVGRO-7509</a> |
+        <strong>PRD:</strong> <a href="https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit" target="_blank">General Availability: Repositioning Product Requirements</a> |
+        <strong>Figma:</strong> <a href="https://www.figma.com/design/o68uqEh9YupyXfFojtr0vy/Provider-repositioning" target="_blank">Provider Repositioning Design</a>
+    </div>
+    <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
+    <span id="status"></span>
+
+    <table id="mapping-table">
+        <thead>
+            <tr>
+                <th>PRD Req</th>
+                <th>Requirement</th>
+                <th>Ticket(s)</th>
+                <th>Sprint</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- WORKSTREAM 1 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 1: LOCAL NEW - Expand Bookable Profile Enrollment to Include Non-Managed Directories <span class="completion completion-high">(100% - 1/1)</span> | Jul 20 - Aug 27</td></tr>
+            <tr>
+                <td>1.1</td>
+                <td>As a ZD provider, I want my bookable profile product enrollment to include access to non-managed directories</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7510" target="_blank">PROVGRO-7510</a></td>
+                <td class="sprint">Sprint 346</td>
+                <td class="closed">Closed</td>
+            </tr>
+
+            <!-- WORKSTREAM 2 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 2: LOCAL NEW - Support Payor Onboarding Flows (Wellhive, CMS, BCBS) <span class="completion completion-low">(18% - 2/11)</span> | Aug 4 - Sept 14</td></tr>
+            <tr>
+                <td>2.1</td>
+                <td>As a prospective ZD user signing up through Wellhive, CMS, BCBS I click on the CTA and go through a streamlined sign up form</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7512" target="_blank">PROVGRO-7512</a> <span class="ticket-status status-closed">Closed</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7581" target="_blank">PROVGRO-7581</a> <span class="ticket-status status-closed">Closed</span></div>
+                </td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+            </tr>
+            <tr>
+                <td>2.2</td>
+                <td>As a user that has completed sign up and lands on onboarding, I see 4 tasks that are required of me</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7706" target="_blank">PROVGRO-7706</a></td>
+                <td class="sprint">—</td>
+                <td class="qa">QA Ready</td>
+            </tr>
+            <tr>
+                <td>2.3</td>
+                <td>As a user that has completed all 4 sign up tasks, I see two options for going live. I can either go live just on my partner channel or I can go live for all free channels</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a> <span class="ticket-status status-progress">In Progress</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7570" target="_blank">PROVGRO-7570</a> <span class="ticket-status status-todo">To Do</span></div>
+                </td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.4</td>
+                <td>Making a selection from requirement 2.3 will enable the Go live CTA. It was previously greyed out</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.5</td>
+                <td>As a user that selected to sign up for the partner only, I will see a flow that says I am live on the partner I signed up through</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.6</td>
+                <td>As a user that selected to enroll on all free channels, I will get sent into a flow that lets me know I am live and that I will receive my booking link once I am out of pending activation</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7570" target="_blank">PROVGRO-7570</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>2.7</td>
+                <td>If a user selects partner channel only, then the upsell card on post activation will encourage them to expand to all channels</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.8</td>
+                <td>If a user selects all free channels, the upsell on post activation will encourage them to add a payment method</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.9</td>
+                <td>A user that meets criteria for requirement 2.7 will only see the add payment method card mentioned in 2.8 if they add all channels</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>2.10</td>
+                <td>Partner Pages + Marketing Pages for Sept 14</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7571" target="_blank">PROVGRO-7571</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+            </tr>
+            <tr>
+                <td>2.11</td>
+                <td>Optimize Partner Pages + Marketing Pages flow</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">GAP (P2)</td>
+            </tr>
+
+            <!-- WORKSTREAM 3 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 3: LOCAL NEW - In Product Go Live Communication <span class="completion completion-low">(0% - 0/3, 2 in QA)</span> | Aug 4 - Aug 27</td></tr>
+            <tr>
+                <td>3.1</td>
+                <td>As a ZD provider, I want to see a modal when I am officially live on Bookable Profiles and ready to receive bookings</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7522" target="_blank">PROVGRO-7522</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="qa">QA</td>
+            </tr>
+            <tr>
+                <td>3.2</td>
+                <td>As a ZD provider seeing this modal, it is clear to me that I can copy my booking link with the CTA, but I can also preview my profile or click somewhere to get support</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7522" target="_blank">PROVGRO-7522</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="qa">QA</td>
+            </tr>
+            <tr>
+                <td>3.3</td>
+                <td>As a ZD provider that is officially live on Bookable Profile, I want to receive an email letting me know that I am now live and ready to receive bookings</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">CRM-owned</td>
+            </tr>
+
+            <!-- WORKSTREAM 4 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 4: EXISTING - Auto Enable Existing Providers on Bookable Profiles <span class="completion completion-low">(0% - 0/7)</span> | Aug 4 - Sept 14</td></tr>
+            <tr>
+                <td>4.1</td>
+                <td>As an existing ZD practice/provider, I will see a banner in product explaining to me that I have been added to a new free product by default. It is clear to me that no action is required on my end, but I can learn more if I would like</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7516" target="_blank">PROVGRO-7516</a> (Local) <span class="ticket-status status-progress">In Progress</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7639" target="_blank">PROVGRO-7639</a> (Enterprise) <span class="ticket-status status-parked">Parked</span></div>
+                </td>
+                <td class="sprint">Sprint 347</td>
+                <td class="in-progress">In Progress</td>
+            </tr>
+            <tr>
+                <td>4.2</td>
+                <td>As an existing ZD practice/provider, I will see a post activation to do list task to get my booking link if I do not already have one</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Existing Logic</td>
+            </tr>
+            <tr>
+                <td>4.3</td>
+                <td>As an existing ZD practice that has opted out of Book from Google, I want to make sure that my preference is respected when I get added to Bookable Profiles</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>4.4</td>
+                <td>As an existing ZD practice, I will get an email notifying me that I am now activated on the free, Bookable Profile product</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">CRM-owned</td>
+            </tr>
+            <tr>
+                <td>4.5</td>
+                <td>Backfill existing active providers</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a> (Local) <span class="ticket-status status-todo">To Do</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7638" target="_blank">PROVGRO-7638</a> (Enterprise) <span class="ticket-status status-parked">Parked</span></div>
+                </td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>4.6</td>
+                <td>Handling providers that are mid onboarding as of 9/14</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>4.7</td>
+                <td>Version Handling</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+
+            <!-- WORKSTREAM 5 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 5: EXISTING - Book from Google Connection on Post Activation To Do List <span class="completion completion-medium">(50% - 2/4)</span> | Jul 20 - Sept 14</td></tr>
+            <tr>
+                <td>5.1</td>
+                <td>As a ZD user that just became active on Bookable Profiles, my practice level BFG setting is toggled to ON</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Existing Logic</td>
+            </tr>
+            <tr>
+                <td>5.2</td>
+                <td>As a ZD user that just became active on Bookable Profiles, I will see a to do list item directing me to the Google Business Profiles page to either link or add my GBPs</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7520" target="_blank">PROVGRO-7520</a></td>
+                <td class="sprint">Sprint 346</td>
+                <td class="closed">Closed</td>
+            </tr>
+            <tr>
+                <td>5.3</td>
+                <td>As a ZD user that became active on Bookable Profiles, I see another to do list task within 72 hours that I should go check the status of my profiles</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7521" target="_blank">PROVGRO-7521</a></td>
+                <td class="sprint">Sprint 346, 347</td>
+                <td class="closed">Closed</td>
+            </tr>
+            <tr>
+                <td>5.4</td>
+                <td>As a ZD user adding my location in the provider profile creation step, I should see an option to save my standard google verified address</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">GAP</td>
+            </tr>
+
+            <!-- WORKSTREAM 6 -->
+            <tr class="section-header"><td colspan="5">WORKSTREAM 6: ALL PROVIDERS - Update Sign Up Form to Match New Website Branding <span class="completion completion-low">(0% - 0/5)</span> | Aug 4 - Sept 14</td></tr>
+            <tr>
+                <td>6.1</td>
+                <td>Font</td>
+                <td rowspan="5"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7635" target="_blank">PROVGRO-7635</a></td>
+                <td rowspan="5" class="sprint">—</td>
+                <td rowspan="5" class="to-do">To Do</td>
+            </tr>
+            <tr><td>6.2</td><td>Background color</td></tr>
+            <tr><td>6.3</td><td>Form shape</td></tr>
+            <tr><td>6.4</td><td>Button shape</td></tr>
+            <tr><td>6.7</td><td>Font color</td></tr>
+
+            <!-- REQUIREMENTS V2: Welcome Modal -->
+            <tr class="section-header"><td colspan="5">REQUIREMENTS V2: Four-Step Modal for Existing Users <span class="completion completion-low">(0% - 0/7)</span> | Post Sept 14</td></tr>
+            <tr>
+                <td>V2 1.1</td>
+                <td>An existing practice user should be able to see a 4 step modal on their homepage explaining the changes that we made to their account</td>
+                <td rowspan="7"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7699" target="_blank">PROVGRO-7699</a></td>
+                <td rowspan="7" class="sprint">—</td>
+                <td rowspan="7" class="to-do">To Do</td>
+            </tr>
+            <tr><td>V2 1.2</td><td>A practice user should be able to click Next on the welcome modal to get to the next tile</td></tr>
+            <tr><td>V2 1.3</td><td>A practice user should be able to click X to exit out of the welcome modal regardless of which step they are on</td></tr>
+            <tr><td>V2 1.3b</td><td>A practice user should not be able to click outside of the modal to dismiss it. The only two ways to dismiss are 1) finish clicking through modal 2) click X</td></tr>
+            <tr><td>V2 1.4</td><td>A practice user should be able to see what page of the modal they are on</td></tr>
+            <tr><td>V2 1.5</td><td>When a practice user gets to page 4 of 4 clicking done dismisses the modal</td></tr>
+            <tr><td>V2 1.6</td><td>Until a practice user dismisses the modal, the page behind should be greyed out</td></tr>
+
+            <!-- REQUIREMENTS V2: Auto Enable Banner -->
+            <tr class="section-header"><td colspan="5">REQUIREMENTS V2: Auto Enable Banner for Existing <span class="completion completion-low">(0% - 0/5)</span> | Aug 4 - Sept 14</td></tr>
+            <tr>
+                <td>V2 2.1</td>
+                <td>A practice user should be able to see a banner on the top of their homepage explaining that their practice has been added to additional channels</td>
+                <td rowspan="5"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7516" target="_blank">PROVGRO-7516</a></td>
+                <td rowspan="5" class="sprint">Sprint 347</td>
+                <td rowspan="5" class="in-progress">In Progress</td>
+            </tr>
+            <tr><td>V2 2.2</td><td>This banner should exist behind the welcome modal and will not be clickable until the modal is dismissed</td></tr>
+            <tr><td>V2 2.3</td><td>If a user clicks on learn more, they should go to X</td></tr>
+            <tr><td>V2 2.4</td><td>A user can dismiss this banner by doing X</td></tr>
+            <tr><td>V2 2.5</td><td>When a user clicks on "check out channels" they will be redirected to the channels page</td></tr>
+
+            <!-- REQUIREMENTS V2: Other -->
+            <tr class="section-header"><td colspan="5">REQUIREMENTS V2: Other (Payment Upsell, Grow Your Practice, Payment Modal) <span class="completion completion-low">(0% - 0/3)</span> | Post Sept 14</td></tr>
+            <tr>
+                <td>V2 3.1-3.5</td>
+                <td>Add Payment Method Upsell - If a user does not choose to add a payment method in the go live flow, they will see an upsell card on: Add providers flow, Performance dashboard, Channels page, Post activation page</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Other PRD</td>
+            </tr>
+            <tr>
+                <td>V2 4.1-4.3</td>
+                <td>Grow Your Practice Section on Post Activation - This will no longer be called "grow your practice" and will just prompt a user to explore practice solutions</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">GAP</td>
+            </tr>
+            <tr>
+                <td>V2 5.1-5.3</td>
+                <td>Success Modal in Go Live Flow for Payment - Once a user adds their payment method in the go live flow (clicking continue on the payment modal), they should see a modal that indicates adding payment was successful</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">GAP</td>
+            </tr>
+
+            <!-- SUPPORTING TICKETS -->
+            <tr class="section-header"><td colspan="5">SUPPORTING TICKETS (Not Mapped to PRD Requirements) <span class="completion completion-low">(20% - 1/5)</span></td></tr>
+            <tr>
+                <td>—</td>
+                <td>Analytics instrumentation</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7540" target="_blank">PROVGRO-7540</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>—</td>
+                <td>SKU activation timestamp (technical enabler)</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7584" target="_blank">PROVGRO-7584</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+            </tr>
+            <tr>
+                <td>—</td>
+                <td>Copy changes catch-all</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7628" target="_blank">PROVGRO-7628</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+            </tr>
+            <tr>
+                <td>—</td>
+                <td>SMS consent capture (compliance)</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7631" target="_blank">PROVGRO-7631</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="qa">QA</td>
+            </tr>
+            <tr>
+                <td>—</td>
+                <td>Enterprise reposition home decision</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7623" target="_blank">PROVGRO-7623</a></td>
+                <td class="sprint">—</td>
+                <td class="parked">Parked</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary by Workstream</h2>
+    <table>
+        <tr><th>Workstream</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
+        <tr><td>WS1: Expand BP Enrollment</td><td>1</td><td>1</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
+        <tr><td>WS2: Payor Onboarding</td><td>11</td><td>2</td><td>8</td><td>1</td><td class="completion-low">18%</td></tr>
+        <tr><td>WS3: Go Live Communication</td><td>3</td><td>0</td><td>2 (QA)</td><td>1</td><td class="completion-low">0%</td></tr>
+        <tr><td>WS4: Auto Enable Existing</td><td>7</td><td>0</td><td>1</td><td>6</td><td class="completion-low">0%</td></tr>
+        <tr><td>WS5: Book from Google</td><td>4</td><td>2</td><td>0</td><td>2</td><td class="completion-medium">50%</td></tr>
+        <tr><td>WS6: Sign Up Form Branding</td><td>5</td><td>0</td><td>0</td><td>5</td><td class="completion-low">0%</td></tr>
+        <tr><td>V2: Welcome Modal</td><td>7</td><td>0</td><td>0</td><td>7</td><td class="completion-low">0%</td></tr>
+        <tr><td>V2: Auto Enable Banner</td><td>5</td><td>0</td><td>5</td><td>0</td><td class="completion-low">0%</td></tr>
+        <tr><td>V2: Other</td><td>3</td><td>0</td><td>0</td><td>3</td><td class="completion-low">0%</td></tr>
+        <tr style="font-weight:bold;background:#e0e0e0"><td>TOTAL</td><td>46</td><td>5</td><td>16</td><td>25</td><td>11%</td></tr>
+    </table>
+
+    <script>
+        function copyTable() {
+            const table = document.getElementById('mapping-table');
+            let tsv = '';
+            for (const row of table.rows) {
+                const cells = [];
+                for (const cell of row.cells) {
+                    let text = cell.innerText.replace(/\n/g, ' | ');
+                    if (cell.colSpan > 1) {
+                        cells.push(text);
+                        for (let i = 1; i < cell.colSpan; i++) cells.push('');
+                    } else if (!cell.hasAttribute('rowspan') || cell.getAttribute('rowspan') === '1') {
+                        cells.push(text);
+                    }
+                }
+                if (cells.length > 0) tsv += cells.join('\t') + '\n';
+            }
+            navigator.clipboard.writeText(tsv).then(() => {
+                document.getElementById('status').innerText = 'Copied!';
+                setTimeout(() => { document.getElementById('status').innerText = ''; }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
