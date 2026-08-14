@@ -443,36 +443,6 @@
         </table>
     </div>
 
-    <!-- BLOCKING DECISIONS -->
-    <h2>Blocking Decisions</h2>
-    <table>
-        <tr><th>#</th><th>Decision</th><th>Stream</th></tr>
-        <tr><td>D1</td><td>Building toward ZD Active only (not SKU/product-specific states yet)</td><td>Funnel</td></tr>
-        <tr><td>D2</td><td>System of record (timestamps = observation time, not source time)</td><td>Funnel</td></tr>
-        <tr><td>D3</td><td>Single unified funnel (no IP/OOP split — analytics derives views)</td><td>Funnel</td></tr>
-        <tr><td>D4</td><td>Provider-location signals for insurance, integration</td><td>Funnel</td></tr>
-        <tr><td>D5</td><td>Emission grain: provider + practice (client derived in analytics)</td><td>Active State</td></tr>
-        <tr><td>D6</td><td>DPN vs individual CAN component tracking</td><td>Active State</td></tr>
-        <tr><td>D7</td><td>Google/Bing/Apple fanned out from single IsPartnerSitesMapped</td><td>Active State</td></tr>
-        <tr><td>D8</td><td>ENABLED vs INACTIVE distinction (high-water mark on producer vs consumer join)</td><td>Active State</td></tr>
-    </table>
-
-    <!-- TIMELINE SUMMARY -->
-    <h2>Timeline Summary</h2>
-    <table>
-        <tr><th>Stream</th><th>Duration</th><th>Target</th></tr>
-        <tr>
-            <td><strong>Active State</strong></td>
-            <td>70% complete — remaining ~4 weeks</td>
-            <td>H2 2026</td>
-        </tr>
-        <tr>
-            <td><strong>Onboarding Funnel</strong></td>
-            <td>~12 weeks + backfill TBD</td>
-            <td>H2 2026</td>
-        </tr>
-    </table>
-
     <script>
         const STORAGE_KEY = 'provider-data-rebuild-plan';
 
