@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider Data Rebuild - Project Plan</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; }
+        h2 { color: #444; margin-top: 30px; border-bottom: 2px solid #4a90d9; padding-bottom: 5px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #4a90d9; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:hover { background-color: #f1f1f1; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .links { margin-bottom: 20px; line-height: 1.8; background: #f8f9fa; padding: 15px; border-radius: 6px; }
+        .section-box { background: #f8f9fa; border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 6px; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .section-header h2 { margin: 0; border: none; padding: 0; }
+        .progress-badge { font-size: 18px; font-weight: bold; padding: 8px 16px; border-radius: 6px; }
+        .progress-low { background: #f8d7da; color: #721c24; }
+        .progress-medium { background: #fff3cd; color: #856404; }
+        .progress-high { background: #d4edda; color: #155724; }
+        .scope-container { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+        .scope-in, .scope-out { flex: 1; min-width: 280px; padding: 12px; border-radius: 4px; }
+        .scope-in { background: #d4edda; }
+        .scope-out { background: #f8d7da; }
+        .scope-in strong, .scope-out strong { display: block; margin-bottom: 8px; }
+        .sizing { background: #e9ecef; padding: 2px 8px; border-radius: 3px; font-size: 12px; }
+        .status-todo { color: #6c757d; }
+        .status-progress { color: #fd7e14; font-weight: bold; }
+        .status-done { color: #28a745; font-weight: bold; }
+        .copy-btn { background: #4a90d9; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .copy-btn:hover { background: #357abd; }
+        #status1, #status2 { margin-left: 10px; color: #28a745; font-size: 12px; }
+        [data-editable] { background: #fffde7; cursor: pointer; min-width: 100px; }
+        [data-editable]:hover { background: #fff9c4; }
+        .date-input { border: 1px solid #ddd; padding: 4px 6px; font-size: 14px; font-family: inherit; width: 120px; background: #fffde7; border-radius: 3px; }
+        .date-input:hover { background: #fff9c4; }
+        .date-input:focus { outline: 2px solid #fbc02d; background: #fff; }
+        .status-select { padding: 4px 8px; font-size: 14px; font-family: inherit; border-radius: 3px; cursor: pointer; border: 1px solid #ddd; }
+        .status-select.done { background: #d4edda; color: #155724; }
+        .status-select.progress { background: #fff3cd; color: #856404; }
+        .status-select.todo { background: #e2e3e5; color: #383d41; }
+        #save-status { color: #28a745; font-weight: bold; margin-left: 10px; opacity: 0; transition: opacity 0.3s; }
+        .toolbar { margin-bottom: 15px; display: flex; gap: 10px; align-items: center; }
+        .export-btn { background: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .export-btn:hover { background: #218838; }
+        .edit-hint { font-size: 12px; color: #666; font-style: italic; }
+        .phase-header { background: #2c5282 !important; color: white !important; font-weight: bold; }
+        .phase-header td { color: white !important; }
+        .sub-row { background: #fff !important; }
+        .sub-row td:first-child { padding-left: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Provider Data Rebuild - Project Plan</h1>
+
+    <div class="links">
+        <strong>Epics:</strong>
+        <a href="https://zocdoc.atlassian.net/browse/PROVGRO-6663" target="_blank">PROVGRO-6663</a> (Active States) |
+        <a href="https://zocdoc.atlassian.net/browse/PROVGRO-6211" target="_blank">PROVGRO-6211</a> (Onboarding Funnel)<br>
+        <strong>Specs:</strong>
+        <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3308748803" target="_blank">High-Level Spec</a> |
+        <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3045163087" target="_blank">Active State Tech Spec</a> |
+        <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3344007171" target="_blank">Active State Addendum</a> |
+        <a href="https://docs.google.com/document/d/1VYxEu8ykWT00TiUnClGnEyKluJb1vmAPph7z2ZIGovc/edit" target="_blank">Provider Data Rebuild Requirement</a>
+    </div>
+
+    <!-- ACTIVE STATE SECTION -->
+    <div class="section-box">
+        <div class="section-header">
+            <h2>Active State — <a href="https://zocdoc.atlassian.net/browse/PROVGRO-6663" target="_blank">PROVGRO-6663</a></h2>
+            <span class="progress-badge progress-medium">70% Complete</span>
+        </div>
+        <p><em>"What is true today?"</em> — Current state of products/SKUs for a provider. Mutable snapshot that can regress.</p>
+
+        <div class="scope-container">
+            <div class="scope-out">
+                <strong>Out of Scope (Post-MVP)</strong>
+                <ul>
+                    <li>SKU: Practice Solutions/SaaS</li>
+                    <li>Products: Zo, Branded Directory</li>
+                    <li>Features: SPO, Scheduling Rules, Insurance eligibility, ZVS, Intake, EHR</li>
+                    <li>Grain: Provider-Location, Client level</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <button class="copy-btn" onclick="copyTable('table-status')">Copy Table</button>
+            <button class="export-btn" onclick="exportData()">Export Dates</button>
+            <span id="status1"></span>
+            <span id="save-status"></span>
+            <span class="edit-hint">Click any yellow date cell to edit — changes auto-save</span>
+        </div>
+
+        <table id="table-status">
+            <thead>
+                <tr>
+                    <th>Deliverable</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- TECH SPEC -->
+                <tr class="phase-header"><td colspan="4">Tech Spec</td></tr>
+                <tr class="sub-row">
+                    <td>Active State Tech Spec + Addendum</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+
+                <!-- CONFIGURATION -->
+                <tr class="phase-header"><td colspan="4">Configuration Alignment</td></tr>
+                <tr class="sub-row">
+                    <td>List of SKUs, Products, Features (ActivationChannel enum with 14 channels)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+
+                <!-- DATA MODEL -->
+                <tr class="phase-header"><td colspan="4">Data Model</td></tr>
+                <tr class="sub-row">
+                    <td>Data model changes for config (ActivationChannel enum)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Data model changes for status DTOs (ProviderActivationStatusDdbDto)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+
+                <!-- SIGNAL INGESTION -->
+                <tr class="phase-header"><td colspan="4">Ingest Active State Signals</td></tr>
+                <tr class="sub-row">
+                    <td>Availability (AvailabilityBookabilityDdbDto via NetAvailabilityChangeStream)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Spend (SpendBudgetBookabilityDdbDto via AAA stream)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Feedmapping (MPFeedMappingDisabledAlertHandler)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Directory Membership (NetworkMembershipBookabilityDdbDto via SNS + Athena)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Provider References (ProviderQualificationBookabilityDdbDto via document-services)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+
+                <!-- SCHEMA -->
+                <tr class="phase-header"><td colspan="4">Schema Alignment</td></tr>
+                <tr class="sub-row">
+                    <td>Event schema agreement with AE/DE</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-progress">In Progress</td>
+                </tr>
+
+                <!-- PIPELINE -->
+                <tr class="phase-header"><td colspan="4">Pipeline for Sending Data Events</td></tr>
+                <tr class="sub-row">
+                    <td>Event emission infrastructure to Cistern (PROVGRO-6672)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-progress">In Progress</td>
+                </tr>
+
+                <!-- PRODUCT STATUS -->
+                <tr class="phase-header"><td colspan="4">Calculate Active Status per Provider per Product</td></tr>
+                <tr class="sub-row">
+                    <td>Booking Link</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Marketplace</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Branded Directory</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                                <tr class="sub-row">
+                    <td>CMS</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>WellHive</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Anthem</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Blue Shield of CA</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>MetroPlus</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Invisalign</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Healthee</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>ReferWell</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Amino Health</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Goodbill</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>DUOS</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Healthgrades</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Yelp</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Gemini</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Google AI mode</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Amazon</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Curai</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>C the Signs</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Healthie</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Reserve with Google (Book from Google)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Apple</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Bing</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-done">Done</td>
+                </tr>
+
+                <!-- SKU STATUS -->
+                <tr class="phase-header"><td colspan="4">Calculate Active Status per Provider per SKU + Send Event</td></tr>
+                <tr class="sub-row">
+                    <td>Bookable Profile</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr class="sub-row">
+                    <td>Marketplace</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+
+                <!-- BACKFILL -->
+                <tr class="phase-header"><td colspan="4">Backfill</td></tr>
+                <tr class="sub-row">
+                    <td>Launch backfill — compute status for all existing providers (PROVGRO-6673)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ONBOARDING FUNNEL SECTION -->
+    <div class="section-box">
+        <div class="section-header">
+            <h2>Onboarding Funnel — <a href="https://zocdoc.atlassian.net/browse/PROVGRO-6211" target="_blank">PROVGRO-6211</a></h2>
+            <span class="progress-badge progress-low">0% Complete</span>
+        </div>
+        <p><em>"How did we get here?"</em> — Progression through onboarding milestones. Append-only record that is never overwritten.</p>
+
+        <div class="scope-container">
+            <div class="scope-out">
+                <strong>Out of Scope (Post-MVP)</strong>
+                <ul>
+                    <li>SKUs: Practice Solutions/SaaS</li>
+                    <li>Products: Zo, Branded Directory</li>
+                    <li>Features: SPO, Scheduling Rules, Insurance eligibility, Appointment Reminders</li>
+                    <li>Provider-Location level events</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="copy-btn" onclick="copyTable('table-funnel')">Copy Table</button>
+        <span id="status2"></span>
+
+        <table id="table-funnel">
+            <thead>
+                <tr>
+                    <th>Deliverable</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data Model - Config: Versioned registry of SKUs, Products, Features, Milestones, Sub-milestones, Tasks</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Data Model - Funnel: Enhance existing data model for Task, Milestone, SubMilestone at Client/Practice/Provider</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Signal Ingestion: Practice Creation Event, Provider Creation Event, Cron to pull provider details</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Status Calculations: Lambda for milestone/sub-milestone calculations — Provider milestones → Practice rollup</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Schema Agreement: Finalize event schema, milestone mapping, grain hierarchy</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Event Emission: Emit provider/practice/client grain events to Cistern</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+                <tr>
+                    <td>Backfill: Historical milestone data for existing providers/practices</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="status-todo">To Do</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BLOCKING DECISIONS -->
+    <h2>Blocking Decisions</h2>
+    <table>
+        <tr><th>#</th><th>Decision</th><th>Stream</th></tr>
+        <tr><td>D1</td><td>Building toward ZD Active only (not SKU/product-specific states yet)</td><td>Funnel</td></tr>
+        <tr><td>D2</td><td>System of record (timestamps = observation time, not source time)</td><td>Funnel</td></tr>
+        <tr><td>D3</td><td>Single unified funnel (no IP/OOP split — analytics derives views)</td><td>Funnel</td></tr>
+        <tr><td>D4</td><td>Provider-location signals for insurance, integration</td><td>Funnel</td></tr>
+        <tr><td>D5</td><td>Emission grain: provider + practice (client derived in analytics)</td><td>Active State</td></tr>
+        <tr><td>D6</td><td>DPN vs individual CAN component tracking</td><td>Active State</td></tr>
+        <tr><td>D7</td><td>Google/Bing/Apple fanned out from single IsPartnerSitesMapped</td><td>Active State</td></tr>
+        <tr><td>D8</td><td>ENABLED vs INACTIVE distinction (high-water mark on producer vs consumer join)</td><td>Active State</td></tr>
+    </table>
+
+    <!-- TIMELINE SUMMARY -->
+    <h2>Timeline Summary</h2>
+    <table>
+        <tr><th>Stream</th><th>Duration</th><th>Target</th></tr>
+        <tr>
+            <td><strong>Active State</strong></td>
+            <td>70% complete — remaining ~4 weeks</td>
+            <td>H2 2026</td>
+        </tr>
+        <tr>
+            <td><strong>Onboarding Funnel</strong></td>
+            <td>~12 weeks + backfill TBD</td>
+            <td>H2 2026</td>
+        </tr>
+    </table>
+
+    <script>
+        const STORAGE_KEY = 'provider-data-rebuild-plan';
+
+        
+        function showSaveStatus() {
+            const el = document.getElementById('save-status');
+            el.innerText = 'Saved!';
+            el.style.opacity = 1;
+            setTimeout(() => { el.style.opacity = 0; }, 1500);
+        }
+
+        function exportData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const blob = new Blob([saved], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'provider-data-rebuild-plan-dates.json';
+                a.click();
+            }
+        }
+
+        function copyTable(tableId) {
+            const table = document.getElementById(tableId);
+            let tsv = '';
+            for (const row of table.rows) {
+                const cells = [];
+                for (const cell of row.cells) {
+                    let text = cell.innerText.replace(/\n/g, ' ');
+                    if (cell.colSpan > 1) {
+                        cells.push(text);
+                        for (let i = 1; i < cell.colSpan; i++) cells.push('');
+                    } else {
+                        cells.push(text);
+                    }
+                }
+                if (cells.length > 0) tsv += cells.join('\t') + '\n';
+            }
+            navigator.clipboard.writeText(tsv).then(() => {
+                const statusId = tableId === 'table-status' ? 'status1' : 'status2';
+                document.getElementById(statusId).innerText = 'Copied!';
+                setTimeout(() => { document.getElementById(statusId).innerText = ''; }, 2000);
+            });
+        }
+
+        // Initialize date pickers and status dropdowns
+        document.addEventListener('DOMContentLoaded', () => {
+            let rowIndex = 0;
+            document.querySelectorAll('#table-status tbody tr.sub-row, #table-funnel tbody tr').forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 3) {
+                    const startCell = cells[cells.length - 3];
+                    const endCell = cells[cells.length - 2];
+                    const statusCell = cells[cells.length - 1];
+
+                    // Create date pickers
+                    if (startCell && !startCell.classList.contains('status-done') && !startCell.classList.contains('status-todo') && !startCell.classList.contains('status-progress')) {
+                        createDatePicker(startCell, `start-${rowIndex}`);
+                    }
+                    if (endCell && !endCell.classList.contains('status-done') && !endCell.classList.contains('status-todo') && !endCell.classList.contains('status-progress')) {
+                        createDatePicker(endCell, `end-${rowIndex}`);
+                    }
+
+                    // Create status dropdown
+                    if (statusCell && (statusCell.classList.contains('status-done') || statusCell.classList.contains('status-todo') || statusCell.classList.contains('status-progress'))) {
+                        createStatusDropdown(statusCell, `status-${rowIndex}`);
+                    }
+
+                    rowIndex++;
+                }
+            });
+
+            loadData();
+        });
+
+        function createDatePicker(cell, key) {
+            cell.setAttribute('data-editable', key);
+            cell.innerHTML = '';
+
+            const input = document.createElement('input');
+            input.type = 'date';
+            input.className = 'date-input';
+            input.setAttribute('data-key', key);
+
+            input.addEventListener('change', () => {
+                saveData();
+            });
+
+            cell.appendChild(input);
+        }
+
+        function createStatusDropdown(cell, key) {
+            const currentStatus = cell.innerText.trim();
+            cell.innerHTML = '';
+            cell.className = '';
+
+            const select = document.createElement('select');
+            select.className = 'status-select';
+            select.setAttribute('data-key', key);
+
+            const options = [
+                { value: 'todo', label: 'To Do', class: 'todo' },
+                { value: 'progress', label: 'In Progress', class: 'progress' },
+                { value: 'done', label: 'Done', class: 'done' }
+            ];
+
+            options.forEach(opt => {
+                const option = document.createElement('option');
+                option.value = opt.value;
+                option.textContent = opt.label;
+                select.appendChild(option);
+            });
+
+            // Set initial value
+            if (currentStatus.includes('Done')) select.value = 'done';
+            else if (currentStatus.includes('Progress')) select.value = 'progress';
+            else select.value = 'todo';
+
+            updateSelectClass(select);
+
+            select.addEventListener('change', () => {
+                updateSelectClass(select);
+                saveData();
+            });
+
+            cell.appendChild(select);
+        }
+
+        function updateSelectClass(select) {
+            select.classList.remove('done', 'progress', 'todo');
+            select.classList.add(select.value);
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            const data = saved ? JSON.parse(saved) : {};
+
+            // Set default end date of Aug 25 for Active State section (table-status)
+            const activeStateRows = document.querySelectorAll('#table-status .date-input[data-key^="end-"]');
+            activeStateRows.forEach(input => {
+                const key = input.getAttribute('data-key');
+                if (!data[key]) {
+                    input.value = '2026-08-25';
+                }
+            });
+
+            // Load saved data
+            document.querySelectorAll('.date-input').forEach(input => {
+                const key = input.getAttribute('data-key');
+                if (data[key]) {
+                    input.value = data[key];
+                }
+            });
+            document.querySelectorAll('.status-select').forEach(select => {
+                const key = select.getAttribute('data-key');
+                if (data[key]) {
+                    select.value = data[key];
+                    updateSelectClass(select);
+                }
+            });
+        }
+
+        function saveData() {
+            const data = {};
+            document.querySelectorAll('.date-input').forEach(input => {
+                const key = input.getAttribute('data-key');
+                if (input.value) {
+                    data[key] = input.value;
+                }
+            });
+            document.querySelectorAll('.status-select').forEach(select => {
+                const key = select.getAttribute('data-key');
+                data[key] = select.value;
+            });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            showSaveStatus();
+        }
+    </script>
+</body>
+</html>
