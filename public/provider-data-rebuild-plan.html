@@ -31,8 +31,6 @@
         .status-todo { color: #6c757d; }
         .status-progress { color: #fd7e14; font-weight: bold; }
         .status-done { color: #28a745; font-weight: bold; }
-        .copy-btn { background: #4a90d9; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
-        .copy-btn:hover { background: #357abd; }
         #status1, #status2 { margin-left: 10px; color: #28a745; font-size: 12px; }
         [data-editable] { background: #fffde7; cursor: pointer; min-width: 100px; }
         [data-editable]:hover { background: #fff9c4; }
@@ -45,8 +43,6 @@
         .status-select.todo { background: #e2e3e5; color: #383d41; }
         #save-status { color: #28a745; font-weight: bold; margin-left: 10px; opacity: 0; transition: opacity 0.3s; }
         .toolbar { margin-bottom: 15px; display: flex; gap: 10px; align-items: center; }
-        .export-btn { background: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
-        .export-btn:hover { background: #218838; }
         .edit-hint { font-size: 12px; color: #666; font-style: italic; }
         .phase-header { background: #2c5282 !important; color: white !important; font-weight: bold; }
         .phase-header td { color: white !important; }
@@ -89,8 +85,6 @@
         </div>
 
         <div class="toolbar">
-            <button class="copy-btn" onclick="copyTable('table-status')">Copy Table</button>
-            <button class="export-btn" onclick="exportData()">Export Dates</button>
             <span id="status1"></span>
             <span id="save-status"></span>
             <span class="edit-hint">Click any yellow date cell to edit — changes auto-save</span>
@@ -391,7 +385,6 @@
             </div>
         </div>
 
-        <button class="copy-btn" onclick="copyTable('table-funnel')">Copy Table</button>
         <span id="status2"></span>
 
         <table id="table-funnel">
@@ -489,41 +482,6 @@
             el.innerText = 'Saved!';
             el.style.opacity = 1;
             setTimeout(() => { el.style.opacity = 0; }, 1500);
-        }
-
-        function exportData() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                const blob = new Blob([saved], {type: 'application/json'});
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'provider-data-rebuild-plan-dates.json';
-                a.click();
-            }
-        }
-
-        function copyTable(tableId) {
-            const table = document.getElementById(tableId);
-            let tsv = '';
-            for (const row of table.rows) {
-                const cells = [];
-                for (const cell of row.cells) {
-                    let text = cell.innerText.replace(/\n/g, ' ');
-                    if (cell.colSpan > 1) {
-                        cells.push(text);
-                        for (let i = 1; i < cell.colSpan; i++) cells.push('');
-                    } else {
-                        cells.push(text);
-                    }
-                }
-                if (cells.length > 0) tsv += cells.join('\t') + '\n';
-            }
-            navigator.clipboard.writeText(tsv).then(() => {
-                const statusId = tableId === 'table-status' ? 'status1' : 'status2';
-                document.getElementById(statusId).innerText = 'Copied!';
-                setTimeout(() => { document.getElementById(statusId).innerText = ''; }, 2000);
-            });
         }
 
         // Initialize date pickers and status dropdowns
