@@ -47,10 +47,12 @@
         .design-yes { background-color: #d4edda !important; color: #155724; }
         .design-no { background-color: #f8d7da !important; color: #721c24; }
         .design-pending { background-color: #fff3cd !important; color: #856404; }
-        td:first-child a { font-weight: 600; }
-        td:first-child a::after { content: ' ↗'; font-size: 10px; opacity: 0.5; }
         .section-header a { color: white !important; }
         .section-header a:hover { text-decoration: underline !important; }
+        .section-header { cursor: pointer; }
+        .section-header td::before { content: '▼ '; font-size: 12px; }
+        .section-header.collapsed td::before { content: '▶ '; }
+        .section-row.hidden { display: none; }
     </style>
 </head>
 <body>
@@ -1413,23 +1415,16 @@
         const PRD_REPOSITIONING = 'https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit';
         const PRD_ONBOARDING = 'https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit';
 
-        // Section header to PRD heading anchor mapping
+        // Section header to PRD heading anchor mapping (only sections with actual headings)
         const SECTION_LINKS = {
             'WORKSTREAM 1': PRD_REPOSITIONING + '#heading=h.7qaq9xuzh0sm',
             'WORKSTREAM 2': PRD_REPOSITIONING + '#heading=h.3m1durf8yc2g',
-            'WORKSTREAM 3': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
-            'WORKSTREAM 4': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
-            'WORKSTREAM 5': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
-            'WORKSTREAM 6': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
-            'REQUIREMENTS V2: Four-Step': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
-            'REQUIREMENTS V2: Auto Enable': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
-            'REQUIREMENTS V2: Other': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
-            'ONBOARDING: Adding a Provider': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'ONBOARDING: Provider Side Car': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'ONBOARDING: Location Side Car': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'ONBOARDING: Merged Grid': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'ONBOARDING: Add Providers to Existing': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'ONBOARDING: Guided Flow': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'WORKSTREAM 3': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'WORKSTREAM 4': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'WORKSTREAM 5': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'WORKSTREAM 6': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'REQUIREMENTS V2': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
+            'ONBOARDING:': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
             'SUPPORTING TICKETS': null
         };
 
@@ -1441,9 +1436,8 @@
                 const text = cell.innerText;
                 for (const [key, url] of Object.entries(SECTION_LINKS)) {
                     if (text.includes(key) && url) {
-                        const originalHtml = cell.innerHTML;
-                        const linkText = text.split('<span')[0].trim();
                         const completionSpan = cell.querySelector('.completion');
+                        const textContent = text.replace(/▼ |▶ /, '').split('(')[0].trim();
 
                         cell.innerHTML = '';
                         const link = document.createElement('a');
@@ -1451,7 +1445,8 @@
                         link.target = '_blank';
                         link.style.color = 'white';
                         link.style.textDecoration = 'none';
-                        link.innerHTML = linkText;
+                        link.innerText = textContent;
+                        link.onclick = (e) => e.stopPropagation(); // Don't collapse when clicking link
                         cell.appendChild(link);
                         if (completionSpan) {
                             cell.appendChild(document.createTextNode(' '));
@@ -1463,45 +1458,36 @@
             });
         }
 
-        function linkPrdRequirements() {
+        function initCollapsibleSections() {
             const table = document.getElementById('mapping-table');
-            const rows = table.querySelectorAll('tbody tr');
-            let currentPrd = PRD_REPOSITIONING;
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
 
-            rows.forEach(row => {
-                // Check section headers to determine which PRD
+            rows.forEach((row, index) => {
                 if (row.classList.contains('section-header')) {
-                    const text = row.innerText;
-                    if (text.includes('ONBOARDING:')) {
-                        currentPrd = PRD_ONBOARDING;
-                    } else if (text.includes('WORKSTREAM') || text.includes('REQUIREMENTS V2') || text.includes('SUPPORTING')) {
-                        currentPrd = PRD_REPOSITIONING;
+                    // Find all rows until next section header
+                    const sectionRows = [];
+                    for (let i = index + 1; i < rows.length; i++) {
+                        if (rows[i].classList.contains('section-header')) break;
+                        sectionRows.push(rows[i]);
+                        rows[i].classList.add('section-row');
                     }
-                    return;
-                }
 
-                // Link the first cell (PRD Req) if it has a requirement ID
-                const firstCell = row.querySelector('td:first-child');
-                if (!firstCell) return;
-
-                const reqId = firstCell.innerText.trim();
-                if (reqId && reqId !== '—' && !firstCell.querySelector('a')) {
-                    const link = document.createElement('a');
-                    link.href = currentPrd;
-                    link.target = '_blank';
-                    link.innerText = reqId;
-                    link.title = 'View in PRD';
-                    firstCell.innerText = '';
-                    firstCell.appendChild(link);
+                    // Add click handler to toggle
+                    row.addEventListener('click', (e) => {
+                        if (e.target.tagName === 'A') return; // Don't collapse on link click
+                        row.classList.toggle('collapsed');
+                        sectionRows.forEach(r => r.classList.toggle('hidden'));
+                    });
                 }
             });
         }
+
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async () => {
             await loadFromGitHub();
             linkSectionHeaders();
-            linkPrdRequirements();
+            initCollapsibleSections();
             initEditableCells();
         });
     </script>
