@@ -70,7 +70,6 @@
         <a href="https://www.figma.com/design/Hcni0ssR0NosWQDV3ILq71/Sept-E2E-Launch" target="_blank">Figma</a> |
         <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3288989776" target="_blank">Tech Spec</a>
     </div>
-    <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
     <button class="copy-btn" onclick="saveToGitHub()" style="background:#28a745">Save Sign-offs</button>
     <button class="copy-btn" onclick="expandAll()" style="background:#6c757d">Expand All</button>
     <button class="copy-btn" onclick="collapseAll()" style="background:#6c757d">Collapse All</button>
@@ -1246,28 +1245,6 @@
     </table>
 
     <script>
-        function copyTable() {
-            const table = document.getElementById('mapping-table');
-            let tsv = '';
-            for (const row of table.rows) {
-                const cells = [];
-                for (const cell of row.cells) {
-                    let text = cell.innerText.replace(/\n/g, ' | ');
-                    if (cell.colSpan > 1) {
-                        cells.push(text);
-                        for (let i = 1; i < cell.colSpan; i++) cells.push('');
-                    } else if (!cell.hasAttribute('rowspan') || cell.getAttribute('rowspan') === '1') {
-                        cells.push(text);
-                    }
-                }
-                if (cells.length > 0) tsv += cells.join('\t') + '\n';
-            }
-            navigator.clipboard.writeText(tsv).then(() => {
-                document.getElementById('status').innerText = 'Copied!';
-                setTimeout(() => { document.getElementById('status').innerText = ''; }, 2000);
-            });
-        }
-
         // Design Sign-off editable functionality
         const STORAGE_KEY = 'provider-growth-design-signoffs';
 
