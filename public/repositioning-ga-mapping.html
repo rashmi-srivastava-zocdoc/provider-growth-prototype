@@ -45,6 +45,11 @@
         .workstream-row:hover { background-color: #d0e8f0; }
         .workstream-row.hidden { display: none; }
 
+        /* Requirement header row */
+        .req-header { background-color: #6b8cae !important; color: white; font-size: 12px; }
+        .req-header td { color: white !important; font-weight: bold; padding: 6px 8px; }
+        .req-header.hidden { display: none; }
+
         /* Requirement rows (Level 3) */
         .req-row { background-color: #fff; }
         .req-row:hover { background-color: #f5f5f5; }
@@ -112,13 +117,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>1</td><td>1</td><td>0</td><td>0</td>
             </tr>
+            <tr class="req-header ga-ws1-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws1-req hidden">
-                <td>1.1 - Bookable profile product enrollment to include access to non-managed directories</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">1.1</td>
+                <td colspan="3">Bookable profile product enrollment to include access to non-managed directories</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7510" target="_blank">PROVGRO-7510</a></td>
                 <td class="sprint">Sprint 346</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- WS2: Payor Onboarding -->
@@ -127,99 +140,107 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>11</td><td>3</td><td>7</td><td>1</td>
             </tr>
+            <tr class="req-header ga-ws2-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.1 - Streamlined sign up form for Wellhive, CMS, BCBS</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.1</td>
+                <td colspan="3">Streamlined sign up form for Wellhive, CMS, BCBS</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7512" target="_blank">PROVGRO-7512</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7581" target="_blank">PROVGRO-7581</a> <span class="ticket-status status-closed">Closed</span></div>
                 </td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.2 - See 4 tasks required after sign up on onboarding</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.2</td>
+                <td colspan="3">See 4 tasks required after sign up on onboarding</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7706" target="_blank">PROVGRO-7706</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.3 - Two options for going live: partner channel or all free channels</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.3</td>
+                <td colspan="3">Two options for going live: partner channel or all free channels</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a> <span class="ticket-status status-qa">In Review</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7570" target="_blank">PROVGRO-7570</a> <span class="ticket-status status-progress">In Progress</span></div>
                 </td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="in-progress">In Progress</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.4 - Go live CTA enabled after selection</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.4</td>
+                <td colspan="3">Go live CTA enabled after selection</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="qa">In Review</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.5 - Partner only selection shows partner live flow</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.5</td>
+                <td colspan="3">Partner only selection shows partner live flow</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="qa">In Review</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.6 - All free channels selection shows live flow with pending activation</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.6</td>
+                <td colspan="3">All free channels selection shows live flow with pending activation</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7570" target="_blank">PROVGRO-7570</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="in-progress">In Progress</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.7 - Partner only upsell card to expand to all channels</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.7</td>
+                <td colspan="3">Partner only upsell card to expand to all channels</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="qa">In Review</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.8 - All free channels upsell to add payment method</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.8</td>
+                <td colspan="3">All free channels upsell to add payment method</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="qa">In Review</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.9 - Partner user sees payment card only after adding all channels</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.9</td>
+                <td colspan="3">Partner user sees payment card only after adding all channels</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7561" target="_blank">PROVGRO-7561</a></td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="qa">In Review</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.10 - Partner Pages + Marketing Pages for Sept 14</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.10</td>
+                <td colspan="3">Partner Pages + Marketing Pages for Sept 14</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7571" target="_blank">PROVGRO-7571</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws2-req hidden">
-                <td>2.11 - Optimize Partner Pages + Marketing Pages flow</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.11</td>
+                <td colspan="3">Optimize Partner Pages + Marketing Pages flow</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">GAP (P2)</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- WS3: Go Live Communication -->
@@ -228,29 +249,37 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>3</td><td>2</td><td>0</td><td>1</td>
             </tr>
+            <tr class="req-header ga-ws3-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws3-req hidden">
-                <td>3.1 - Modal when live on Bookable Profiles ready to receive bookings</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">3.1</td>
+                <td colspan="3">Modal when live on Bookable Profiles ready to receive bookings</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7522" target="_blank">PROVGRO-7522</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws3-req hidden">
-                <td>3.2 - Modal with copy booking link CTA, preview profile, support links</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">3.2</td>
+                <td colspan="3">Modal with copy booking link CTA, preview profile, support links</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7522" target="_blank">PROVGRO-7522</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws3-req hidden">
-                <td>3.3 - Email notification when live on Bookable Profile</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">3.3</td>
+                <td colspan="3">Email notification when live on Bookable Profile</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">CRM-owned</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- WS4: Auto Enable Existing -->
@@ -259,67 +288,75 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>7</td><td>1</td><td>0</td><td>6</td>
             </tr>
+            <tr class="req-header ga-ws4-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.1 - Banner explaining added to new free product</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.1</td>
+                <td colspan="3">Banner explaining added to new free product</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7516" target="_blank">PROVGRO-7516</a> (Local) <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7639" target="_blank">PROVGRO-7639</a> (Enterprise) <span class="ticket-status status-parked">Parked</span></div>
                 </td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.2 - Post activation to do list task to get booking link</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.2</td>
+                <td colspan="3">Post activation to do list task to get booking link</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">Existing Logic</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.3 - BFG opt-out preference respected on BP enrollment</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.3</td>
+                <td colspan="3">BFG opt-out preference respected on BP enrollment</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
                 <td class="sprint">Sprint 348</td>
                 <td class="to-do">To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.4 - Email notification for activation on free BP product</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.4</td>
+                <td colspan="3">Email notification for activation on free BP product</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">CRM-owned</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.5 - Backfill existing active providers</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.5</td>
+                <td colspan="3">Backfill existing active providers</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a> (Local) <span class="ticket-status status-todo">To Do</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7638" target="_blank">PROVGRO-7638</a> (Enterprise) <span class="ticket-status status-parked">Parked</span></div>
                 </td>
                 <td class="sprint">Sprint 348</td>
                 <td class="to-do">To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.6 - Handling providers mid onboarding as of 9/14</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.6</td>
+                <td colspan="3">Handling providers mid onboarding as of 9/14</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
                 <td class="sprint">Sprint 348</td>
                 <td class="to-do">To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws4-req hidden">
-                <td>4.7 - Version Handling</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.7</td>
+                <td colspan="3">Version Handling</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7537" target="_blank">PROVGRO-7537</a></td>
                 <td class="sprint">Sprint 348</td>
                 <td class="to-do">To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- WS5: Book from Google -->
@@ -328,37 +365,45 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>4</td><td>2</td><td>0</td><td>2</td>
             </tr>
+            <tr class="req-header ga-ws5-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws5-req hidden">
-                <td>5.1 - Practice level BFG setting toggled ON when active</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">5.1</td>
+                <td colspan="3">Practice level BFG setting toggled ON when active</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">Existing Logic</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws5-req hidden">
-                <td>5.2 - To do list item to link/add GBPs</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">5.2</td>
+                <td colspan="3">To do list item to link/add GBPs</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7520" target="_blank">PROVGRO-7520</a></td>
                 <td class="sprint">Sprint 346</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws5-req hidden">
-                <td>5.3 - To do task within 72hrs to check profile status</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">5.3</td>
+                <td colspan="3">To do task within 72hrs to check profile status</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7521" target="_blank">PROVGRO-7521</a></td>
                 <td class="sprint">Sprint 346-347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row ga-ws5-req hidden">
-                <td>5.4 - Tooltip for new BP icon</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">5.4</td>
+                <td colspan="3">Tooltip for new BP icon</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">GAP (P2)</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- WS6: Sign Up Form Branding -->
@@ -367,13 +412,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>5</td><td>5</td><td>0</td><td>0</td>
             </tr>
+            <tr class="req-header ga-ws6-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-ws6-req hidden">
-                <td>6.1 - New branding for all free users on sign up form</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">6.1</td>
+                <td colspan="3">New branding for all free users on sign up form</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7518" target="_blank">PROVGRO-7518</a></td>
                 <td class="sprint">Sprint 346</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- V2: Welcome Modal -->
@@ -382,13 +435,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>7</td><td>0</td><td>0</td><td>7</td>
             </tr>
+            <tr class="req-header ga-v2modal-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-v2modal-req hidden">
-                <td>V2 1.1-1.7 - Four-step welcome modal for new BP users</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">V2 1.1-1.7</td>
+                <td colspan="3">Four-step welcome modal for new BP users</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">V2 (Post-launch)</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- V2: Auto Enable Banner -->
@@ -397,13 +458,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>5</td><td>5</td><td>0</td><td>0</td>
             </tr>
+            <tr class="req-header ga-v2banner-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-v2banner-req hidden">
-                <td>V2 2.1-2.5 - Auto-enable existing provider banner</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">V2 2.1-2.5</td>
+                <td colspan="3">Auto-enable existing provider banner</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7516" target="_blank">PROVGRO-7516</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- V2: Other -->
@@ -412,13 +481,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>3</td><td>0</td><td>0</td><td>3</td>
             </tr>
+            <tr class="req-header ga-v2other-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row ga-v2other-req hidden">
-                <td>V2 3.1-5.3 - Post go-live upsells and enhancements</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">V2 3.1-5.3</td>
+                <td colspan="3">Post go-live upsells and enhancements</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">V2 (Post-launch)</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ==================== ONBOARDING UPDATES ==================== -->
@@ -437,25 +514,33 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>15</td><td>4</td><td>3</td><td>8</td>
             </tr>
+            <tr class="req-header onb-ws1-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-ws1-req hidden">
-                <td>1.1 - Multi-provider sign up URL opens guided form</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">1.1</td>
+                <td colspan="3">Multi-provider sign up URL opens guided form</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7566" target="_blank">PROVGRO-7566</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row onb-ws1-req hidden">
-                <td>1.2 - Select an existing practice and choose Add Provider</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">1.2</td>
+                <td colspan="3">Select an existing practice and choose Add Provider</td>
                 <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7568" target="_blank">PROVGRO-7568</a></td>
                 <td class="sprint">Sprint 347</td>
                 <td class="in-progress">In Progress</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
             <tr class="req-row onb-ws1-req hidden">
-                <td>1.3-1.15 - Add Provider guided flow requirements</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">1.3-1.15</td>
+                <td colspan="3">Add Provider guided flow requirements</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7676" target="_blank">PROVGRO-7676</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7677" target="_blank">PROVGRO-7677</a> <span class="ticket-status status-closed">Closed</span></div>
@@ -463,7 +548,7 @@
                 </td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="in-progress">Mixed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ONB WS2: Provider Side Car -->
@@ -472,9 +557,17 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>9</td><td>2</td><td>3</td><td>4</td>
             </tr>
+            <tr class="req-header onb-ws2-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-ws2-req hidden">
-                <td>2.1-2.9 - Provider side car edit functionality</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">2.1-2.9</td>
+                <td colspan="3">Provider side car edit functionality</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7583" target="_blank">PROVGRO-7583</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7584" target="_blank">PROVGRO-7584</a> <span class="ticket-status status-qa">In Review</span></div>
@@ -482,7 +575,7 @@
                 </td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="in-progress">Mixed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ONB WS3: Location Side Car -->
@@ -491,16 +584,24 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>9</td><td>1</td><td>0</td><td>8</td>
             </tr>
+            <tr class="req-header onb-ws3-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-ws3-req hidden">
-                <td>3.1-3.9 - Location side car edit functionality</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">3.1-3.9</td>
+                <td colspan="3">Location side car edit functionality</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7587" target="_blank">PROVGRO-7587</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7588" target="_blank">PROVGRO-7588</a> <span class="ticket-status status-todo">To Do</span></div>
                 </td>
                 <td class="sprint">Sprint 347-348</td>
                 <td class="to-do">Mostly To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ONB WS4: Merged Grid -->
@@ -509,9 +610,17 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>13</td><td>7</td><td>2</td><td>4</td>
             </tr>
+            <tr class="req-header onb-ws4-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-ws4-req hidden">
-                <td>4.1-4.13 - Merged grid functionality</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">4.1-4.13</td>
+                <td colspan="3">Merged grid functionality</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7590" target="_blank">PROVGRO-7590</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7591" target="_blank">PROVGRO-7591</a> <span class="ticket-status status-closed">Closed</span></div>
@@ -519,7 +628,7 @@
                 </td>
                 <td class="sprint">Sprint 346-348</td>
                 <td class="in-progress">Mixed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ONB WS5: Add to Existing Practices -->
@@ -528,13 +637,21 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>5</td><td>0</td><td>0</td><td>5</td>
             </tr>
+            <tr class="req-header onb-ws5-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-ws5-req hidden">
-                <td>5.1-5.5 - Add provider to existing practice flow</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">5.1-5.5</td>
+                <td colspan="3">Add provider to existing practice flow</td>
                 <td class="gap">—</td>
                 <td class="sprint">—</td>
                 <td class="gap">To Do</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- ONB: Guided Flow Framework -->
@@ -543,16 +660,24 @@
                 <td></td><td></td><td></td><td></td><td></td><td></td>
                 <td>8</td><td>8</td><td>0</td><td>0</td>
             </tr>
+            <tr class="req-header onb-framework-req hidden">
+                <td style="padding-left:50px">PRD Req</td>
+                <td colspan="3">Requirement</td>
+                <td>Ticket(s)</td>
+                <td>Sprint</td>
+                <td>Status</td>
+                <td colspan="4"></td>
+            </tr>
             <tr class="req-row onb-framework-req hidden">
-                <td>F.1-F.8 - Guided flow framework components</td>
-                <td></td><td></td><td></td>
+                <td style="padding-left:50px">F.1-F.8</td>
+                <td colspan="3">Guided flow framework components</td>
                 <td class="ticket-list">
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7564" target="_blank">PROVGRO-7564</a> <span class="ticket-status status-closed">Closed</span></div>
                     <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7565" target="_blank">PROVGRO-7565</a> <span class="ticket-status status-closed">Closed</span></div>
                 </td>
                 <td class="sprint">Sprint 346-347</td>
                 <td class="closed">Closed</td>
-                <td></td><td></td><td></td><td></td>
+                <td colspan="4"></td>
             </tr>
 
             <!-- GRAND TOTAL -->
