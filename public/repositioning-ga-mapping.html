@@ -41,12 +41,6 @@
         .qa-pending { color: #fd7e14; font-style: italic; }
         .qa-complete { color: #28a745; }
         .qa-date { font-size: 12px; }
-        .editable { background-color: #fffef0; cursor: text; min-width: 60px; }
-        .editable:hover { background-color: #fff9c4; }
-        .editable:focus { outline: 2px solid #4a90d9; background-color: #fff; }
-        .design-yes { background-color: #d4edda !important; color: #155724; }
-        .design-no { background-color: #f8d7da !important; color: #721c24; }
-        .design-pending { background-color: #fff3cd !important; color: #856404; }
         .section-header a { color: white !important; }
         .section-header a:hover { text-decoration: underline !important; }
         .section-header { cursor: pointer; }
@@ -73,10 +67,8 @@
         <a href="https://www.figma.com/design/Hcni0ssR0NosWQDV3ILq71/Sept-E2E-Launch" target="_blank">Figma</a> |
         <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3288989776" target="_blank">Tech Spec</a>
     </div>
-    <button class="copy-btn" onclick="saveToGitHub()" style="background:#28a745">Save Sign-offs</button>
-    <button class="copy-btn" onclick="expandAll()" style="background:#6c757d">Expand All</button>
-    <button class="copy-btn" onclick="collapseAll()" style="background:#6c757d">Collapse All</button>
-    <span id="status"></span>
+    <button class="copy-btn" onclick="expandAll()">Expand All</button>
+    <button class="copy-btn" onclick="collapseAll()">Collapse All</button>
 
     <h2>Summary</h2>
     <table class="summary-table">
@@ -1260,151 +1252,6 @@
 
 
     <script>
-        // Design Sign-off editable functionality
-        const STORAGE_KEY = 'provider-growth-design-signoffs';
-
-        // Embedded sign-off values (committed to GitHub - updated by Claude)
-        const GITHUB_SIGNOFFS = {};
-
-        // GitHub repo info for saving
-        const GITHUB_REPO = 'rashmi-srivastava-zocdoc/provider-growth-prototype';
-        const GITHUB_FILE = 'public/signoffs.json';
-
-        function getStoredSignoffs() {
-            try {
-                const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-                return { ...GITHUB_SIGNOFFS, ...local };
-            } catch { return { ...GITHUB_SIGNOFFS }; }
-        }
-
-        const TOKEN_KEY = 'github-token-provider-growth';
-
-        async function loadFromGitHub() {
-            try {
-                const resp = await fetch('signoffs.json?t=' + Date.now());
-                if (resp.ok) {
-                    const data = await resp.json();
-                    Object.assign(GITHUB_SIGNOFFS, data);
-                }
-            } catch (e) { console.log('Could not load signoffs.json'); }
-        }
-
-        async function saveToGitHub() {
-            let token = localStorage.getItem(TOKEN_KEY);
-            if (!token) {
-                token = prompt('Enter GitHub personal access token (with repo scope).\nCreate one at: github.com/settings/tokens\n\nThis is saved locally and only used to update signoffs.json');
-                if (!token) return;
-                localStorage.setItem(TOKEN_KEY, token);
-            }
-
-            const data = getStoredSignoffs();
-            const content = btoa(JSON.stringify(data, null, 2));
-
-            document.getElementById('status').innerText = 'Saving...';
-
-            try {
-                // Get current file SHA
-                const getResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
-                    headers: { 'Authorization': `token ${token}` }
-                });
-                const fileData = await getResp.json();
-
-                // Update file
-                const putResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Update design sign-offs',
-                        content: content,
-                        sha: fileData.sha
-                    })
-                });
-
-                if (putResp.ok) {
-                    document.getElementById('status').innerText = 'Saved to GitHub!';
-                    localStorage.removeItem(STORAGE_KEY); // Clear local cache
-                } else {
-                    const err = await putResp.json();
-                    if (err.message?.includes('Bad credentials')) {
-                        localStorage.removeItem(TOKEN_KEY);
-                        document.getElementById('status').innerText = 'Invalid token - try again';
-                    } else {
-                        document.getElementById('status').innerText = 'Error: ' + err.message;
-                    }
-                }
-            } catch (e) {
-                document.getElementById('status').innerText = 'Error: ' + e.message;
-            }
-            setTimeout(() => { document.getElementById('status').innerText = ''; }, 3000);
-        }
-
-        function saveSignoffs(data) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        }
-
-        function applyDesignClass(cell) {
-            const val = cell.innerText.trim().toLowerCase();
-            cell.classList.remove('design-yes', 'design-no', 'design-pending');
-            if (val === 'yes' || val === '✓' || val === 'done') {
-                cell.classList.add('design-yes');
-            } else if (val === 'no' || val === '✗' || val === 'blocked') {
-                cell.classList.add('design-no');
-            } else if (val === 'pending' || val === 'in review' || val === 'waiting') {
-                cell.classList.add('design-pending');
-            }
-        }
-
-        function initEditableCells() {
-            const table = document.getElementById('mapping-table');
-            const stored = getStoredSignoffs();
-            const rows = table.querySelectorAll('tbody tr');
-
-            rows.forEach((row, rowIndex) => {
-                if (row.classList.contains('section-header')) return;
-
-                // Find the Design Sign-off cell (last cell, column 9)
-                const cells = row.querySelectorAll('td');
-                if (cells.length < 9) return;
-
-                // Get the requirement ID from first cell for storage key
-                const reqId = cells[0]?.innerText?.trim() || `row-${rowIndex}`;
-                const designCell = cells[cells.length - 1]; // Last cell
-
-                // Skip cells that are part of a rowspan from above
-                if (!designCell || designCell.hasAttribute('data-skip')) return;
-
-                // Make editable
-                designCell.contentEditable = true;
-                designCell.classList.add('editable');
-                designCell.dataset.reqId = reqId;
-
-                // Load stored value
-                if (stored[reqId]) {
-                    designCell.innerText = stored[reqId];
-                }
-                applyDesignClass(designCell);
-
-                // Save on blur
-                designCell.addEventListener('blur', function() {
-                    const data = getStoredSignoffs();
-                    data[this.dataset.reqId] = this.innerText.trim();
-                    saveSignoffs(data);
-                    applyDesignClass(this);
-                });
-
-                // Save on Enter key
-                designCell.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        this.blur();
-                    }
-                });
-            });
-        }
-
         // PRD URLs with heading anchors
         const PRD_REPOSITIONING = 'https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit';
         const PRD_ONBOARDING = 'https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit';
@@ -1504,11 +1351,9 @@
 
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', async () => {
-            await loadFromGitHub();
+        document.addEventListener('DOMContentLoaded', () => {
             linkSectionHeaders();
             initCollapsibleSections();
-            initEditableCells();
         });
     </script>
 </body>
