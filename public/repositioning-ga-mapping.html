@@ -50,6 +50,11 @@
         .summary-table { margin-bottom: 20px; }
         .section-header-row { background-color: #4a90d9 !important; color: white !important; font-weight: bold; }
         .section-header-row td { color: white !important; padding: 8px; }
+        .summary-header { background-color: #4a90d9 !important; color: white !important; font-weight: bold; cursor: pointer; }
+        .summary-header td { color: white !important; }
+        .summary-header a { color: white !important; }
+        .summary-detail { background-color: #f0f4f8; }
+        .summary-detail.hidden { display: none; }
     </style>
 </head>
 <body>
@@ -71,49 +76,40 @@
     <button class="copy-btn" onclick="collapseAll()">Collapse All</button>
 
     <h2>Summary</h2>
-    <table class="summary-table">
-        <tr><th>Project</th><th>PRD</th><th>Figma</th><th>Epic</th><th>Analytics Spec</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
-        <tr>
-            <td>General Availability</td>
+    <table class="summary-table" id="summary-table">
+        <tr><th>Project / Workstream</th><th>PRD</th><th>Figma</th><th>Epic</th><th>Analytics Spec</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
+        <tr class="summary-header" data-section="ga">
+            <td>▼ General Availability</td>
             <td><a href="https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit" target="_blank">PRD</a></td>
             <td><a href="https://www.figma.com/design/o68uqEh9YupyXfFojtr0vy/Provider-repositioning" target="_blank">Figma</a></td>
             <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7509" target="_blank">PROVGRO-7509</a></td>
             <td>—</td>
             <td>46</td><td>19</td><td>7</td><td>20</td><td>41%</td>
         </tr>
-        <tr>
-            <td>Onboarding Updates</td>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">1) Expand BP Enrollment</td><td></td><td></td><td></td><td></td><td>1</td><td>1</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">2) Payor Onboarding</td><td></td><td></td><td></td><td></td><td>11</td><td>3</td><td>7</td><td>1</td><td class="completion-low">27%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">3) Go Live Communication</td><td></td><td></td><td></td><td></td><td>3</td><td>2</td><td>0</td><td>1</td><td class="completion-medium">67%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">4) Auto Enable Existing</td><td></td><td></td><td></td><td></td><td>7</td><td>1</td><td>0</td><td>6</td><td class="completion-low">14%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">5) Book from Google</td><td></td><td></td><td></td><td></td><td>4</td><td>2</td><td>0</td><td>2</td><td class="completion-medium">50%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">6) Sign Up Form Branding</td><td></td><td></td><td></td><td></td><td>5</td><td>5</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">V2: Welcome Modal</td><td></td><td></td><td></td><td></td><td>7</td><td>0</td><td>0</td><td>7</td><td class="completion-low">0%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">V2: Auto Enable Banner</td><td></td><td></td><td></td><td></td><td>5</td><td>5</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
+        <tr class="summary-detail ga-detail"><td style="padding-left:30px">V2: Other</td><td></td><td></td><td></td><td></td><td>3</td><td>0</td><td>0</td><td>3</td><td class="completion-low">0%</td></tr>
+        <tr class="summary-header" data-section="onb">
+            <td>▼ Onboarding Updates</td>
             <td><a href="https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit" target="_blank">PRD</a></td>
             <td><a href="https://www.figma.com/design/Hcni0ssR0NosWQDV3ILq71/Sept-E2E-Launch" target="_blank">Figma</a></td>
             <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7563" target="_blank">PROVGRO-7563</a></td>
             <td>—</td>
             <td>59</td><td>22</td><td>8</td><td>29</td><td>37%</td>
         </tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">1. Adding a Provider</td><td></td><td></td><td></td><td></td><td>15</td><td>4</td><td>3</td><td>8</td><td class="completion-low">27%</td></tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">2. Provider Side Car</td><td></td><td></td><td></td><td></td><td>9</td><td>2</td><td>3</td><td>4</td><td class="completion-low">22%</td></tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">3. Location Side Car</td><td></td><td></td><td></td><td></td><td>9</td><td>1</td><td>0</td><td>8</td><td class="completion-low">11%</td></tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">4. Merged Grid</td><td></td><td></td><td></td><td></td><td>13</td><td>7</td><td>2</td><td>4</td><td class="completion-medium">54%</td></tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">5. Add to Existing Practices</td><td></td><td></td><td></td><td></td><td>5</td><td>0</td><td>0</td><td>5</td><td class="completion-low">0%</td></tr>
+        <tr class="summary-detail onb-detail"><td style="padding-left:30px">Guided Flow Framework</td><td></td><td></td><td></td><td></td><td>8</td><td>8</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
         <tr style="font-weight:bold;background:#2c5282;color:white"><td>GRAND TOTAL</td><td></td><td></td><td></td><td></td><td>105</td><td>41</td><td>15</td><td>49</td><td>39%</td></tr>
-    </table>
-
-    <h2>Summary by Workstream</h2>
-    <table class="summary-table">
-        <tr><th>Workstream</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
-        <tr class="section-header-row"><td colspan="6">General Availability (Jen Vatnik - PROVGRO-7509)</td></tr>
-        <tr><td>1) Expand BP Enrollment</td><td>1</td><td>1</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
-        <tr><td>2) Payor Onboarding</td><td>11</td><td>3</td><td>7</td><td>1</td><td class="completion-low">27%</td></tr>
-        <tr><td>3) Go Live Communication</td><td>3</td><td>2</td><td>0</td><td>1</td><td class="completion-medium">67%</td></tr>
-        <tr><td>4) Auto Enable Existing</td><td>7</td><td>1</td><td>0</td><td>6</td><td class="completion-low">14%</td></tr>
-        <tr><td>5) Book from Google</td><td>4</td><td>2</td><td>0</td><td>2</td><td class="completion-medium">50%</td></tr>
-        <tr><td>6) Sign Up Form Branding</td><td>5</td><td>5</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
-        <tr><td>V2: Welcome Modal</td><td>7</td><td>0</td><td>0</td><td>7</td><td class="completion-low">0%</td></tr>
-        <tr><td>V2: Auto Enable Banner</td><td>5</td><td>5</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
-        <tr><td>V2: Other</td><td>3</td><td>0</td><td>0</td><td>3</td><td class="completion-low">0%</td></tr>
-        <tr style="font-weight:bold;background:#e0e0e0"><td>Subtotal</td><td>46</td><td>19</td><td>7</td><td>20</td><td>41%</td></tr>
-        <tr class="section-header-row"><td colspan="6">Onboarding Updates (Sydney Morton - PROVGRO-7563)</td></tr>
-        <tr><td>1. Adding a Provider</td><td>15</td><td>4</td><td>3</td><td>8</td><td class="completion-low">27%</td></tr>
-        <tr><td>2. Provider Side Car</td><td>9</td><td>2</td><td>3</td><td>4</td><td class="completion-low">22%</td></tr>
-        <tr><td>3. Location Side Car</td><td>9</td><td>1</td><td>0</td><td>8</td><td class="completion-low">11%</td></tr>
-        <tr><td>4. Merged Grid</td><td>13</td><td>7</td><td>2</td><td>4</td><td class="completion-medium">54%</td></tr>
-        <tr><td>5. Add to Existing Practices</td><td>5</td><td>0</td><td>0</td><td>5</td><td class="completion-low">0%</td></tr>
-        <tr><td>Guided Flow Framework</td><td>8</td><td>8</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
-        <tr style="font-weight:bold;background:#e0e0e0"><td>Subtotal</td><td>59</td><td>22</td><td>8</td><td>29</td><td>37%</td></tr>
     </table>
 
     <h2>Requirements Detail</h2>
@@ -1329,12 +1325,37 @@
             });
         }
 
+        function initSummaryTable() {
+            document.querySelectorAll('.summary-header').forEach(header => {
+                const section = header.dataset.section;
+                const detailRows = document.querySelectorAll(`.${section}-detail`);
+
+                header.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'A') return;
+                    const isExpanded = header.querySelector('td').textContent.startsWith('▼');
+                    const firstCell = header.querySelector('td');
+                    const text = firstCell.textContent.substring(2);
+                    firstCell.textContent = (isExpanded ? '▶ ' : '▼ ') + text;
+                    detailRows.forEach(r => r.classList.toggle('hidden'));
+                });
+            });
+        }
+
         function expandAll() {
             const table = document.getElementById('mapping-table');
             table.querySelectorAll('tr.section-header').forEach(header => {
                 header.classList.remove('collapsed');
             });
             table.querySelectorAll('tr.section-row').forEach(row => {
+                row.classList.remove('hidden');
+            });
+            // Also expand summary table
+            document.querySelectorAll('.summary-header').forEach(header => {
+                const firstCell = header.querySelector('td');
+                const text = firstCell.textContent.substring(2);
+                firstCell.textContent = '▼ ' + text;
+            });
+            document.querySelectorAll('.summary-detail').forEach(row => {
                 row.classList.remove('hidden');
             });
         }
@@ -1347,6 +1368,15 @@
             table.querySelectorAll('tr.section-row').forEach(row => {
                 row.classList.add('hidden');
             });
+            // Also collapse summary table
+            document.querySelectorAll('.summary-header').forEach(header => {
+                const firstCell = header.querySelector('td');
+                const text = firstCell.textContent.substring(2);
+                firstCell.textContent = '▶ ' + text;
+            });
+            document.querySelectorAll('.summary-detail').forEach(row => {
+                row.classList.add('hidden');
+            });
         }
 
 
@@ -1354,6 +1384,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             linkSectionHeaders();
             initCollapsibleSections();
+            initSummaryTable();
         });
     </script>
 </body>
