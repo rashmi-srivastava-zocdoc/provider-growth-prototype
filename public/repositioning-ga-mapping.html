@@ -49,6 +49,8 @@
         .design-pending { background-color: #fff3cd !important; color: #856404; }
         td:first-child a { font-weight: 600; }
         td:first-child a::after { content: ' ↗'; font-size: 10px; opacity: 0.5; }
+        .section-header a { color: white !important; }
+        .section-header a:hover { text-decoration: underline !important; }
     </style>
 </head>
 <body>
@@ -1407,9 +1409,59 @@
             });
         }
 
-        // PRD URLs
+        // PRD URLs with heading anchors
         const PRD_REPOSITIONING = 'https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit';
         const PRD_ONBOARDING = 'https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit';
+
+        // Section header to PRD heading anchor mapping
+        const SECTION_LINKS = {
+            'WORKSTREAM 1': PRD_REPOSITIONING + '#heading=h.7qaq9xuzh0sm',
+            'WORKSTREAM 2': PRD_REPOSITIONING + '#heading=h.3m1durf8yc2g',
+            'WORKSTREAM 3': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
+            'WORKSTREAM 4': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
+            'WORKSTREAM 5': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
+            'WORKSTREAM 6': PRD_REPOSITIONING + '#heading=h.j3a3xmb0ab7s',
+            'REQUIREMENTS V2: Four-Step': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
+            'REQUIREMENTS V2: Auto Enable': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
+            'REQUIREMENTS V2: Other': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
+            'ONBOARDING: Adding a Provider': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'ONBOARDING: Provider Side Car': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'ONBOARDING: Location Side Car': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'ONBOARDING: Merged Grid': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'ONBOARDING: Add Providers to Existing': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'ONBOARDING: Guided Flow': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'SUPPORTING TICKETS': null
+        };
+
+        function linkSectionHeaders() {
+            const table = document.getElementById('mapping-table');
+            const headers = table.querySelectorAll('tr.section-header td');
+
+            headers.forEach(cell => {
+                const text = cell.innerText;
+                for (const [key, url] of Object.entries(SECTION_LINKS)) {
+                    if (text.includes(key) && url) {
+                        const originalHtml = cell.innerHTML;
+                        const linkText = text.split('<span')[0].trim();
+                        const completionSpan = cell.querySelector('.completion');
+
+                        cell.innerHTML = '';
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.target = '_blank';
+                        link.style.color = 'white';
+                        link.style.textDecoration = 'none';
+                        link.innerHTML = linkText;
+                        cell.appendChild(link);
+                        if (completionSpan) {
+                            cell.appendChild(document.createTextNode(' '));
+                            cell.appendChild(completionSpan);
+                        }
+                        break;
+                    }
+                }
+            });
+        }
 
         function linkPrdRequirements() {
             const table = document.getElementById('mapping-table');
@@ -1448,6 +1500,7 @@
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async () => {
             await loadFromGitHub();
+            linkSectionHeaders();
             linkPrdRequirements();
             initEditableCells();
         });
