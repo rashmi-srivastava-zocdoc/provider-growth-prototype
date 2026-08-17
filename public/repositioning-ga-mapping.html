@@ -72,6 +72,8 @@
     </div>
     <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
     <button class="copy-btn" onclick="saveToGitHub()" style="background:#28a745">Save Sign-offs</button>
+    <button class="copy-btn" onclick="expandAll()" style="background:#6c757d">Expand All</button>
+    <button class="copy-btn" onclick="collapseAll()" style="background:#6c757d">Collapse All</button>
     <span id="status"></span>
 
     <table id="mapping-table">
@@ -89,8 +91,8 @@
             </tr>
         </thead>
         <tbody>
-            <!-- WORKSTREAM 1 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 1: LOCAL NEW - Expand Bookable Profile Enrollment to Include Non-Managed Directories <span class="completion completion-high">(100% - 1/1)</span> | Jul 20 - Aug 27</td></tr>
+            <!-- General Availability: Section 1 -->
+            <tr class="section-header"><td colspan="9">General Availability: 1) Expand Bookable Profile Enrollment <span class="completion completion-high">(100% - 1/1)</span></td></tr>
             <tr>
                 <td>1.1</td>
                 <td>As a ZD provider, I want my bookable profile product enrollment to include access to non-managed directories</td>
@@ -103,8 +105,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- WORKSTREAM 2 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 2: LOCAL NEW - Support Payor Onboarding Flows (Wellhive, CMS, BCBS) <span class="completion completion-low">(27% - 3/11)</span> | Aug 4 - Sept 14</td></tr>
+            <!-- General Availability: Section 2 -->
+            <tr class="section-header"><td colspan="9">General Availability: 2) Support Payor Onboarding Flows <span class="completion completion-low">(27% - 3/11)</span></td></tr>
             <tr>
                 <td>2.1</td>
                 <td>As a prospective ZD user signing up through Wellhive, CMS, BCBS I click on the CTA and go through a streamlined sign up form</td>
@@ -233,8 +235,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- WORKSTREAM 3 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 3: LOCAL NEW - In Product Go Live Communication <span class="completion completion-medium">(67% - 2/3)</span> | Aug 4 - Aug 27</td></tr>
+            <!-- General Availability: Section 3 -->
+            <tr class="section-header"><td colspan="9">General Availability: 3) In Product Go Live Communication <span class="completion completion-medium">(67% - 2/3)</span></td></tr>
             <tr>
                 <td>3.1</td>
                 <td>As a ZD provider, I want to see a modal when I am officially live on Bookable Profiles and ready to receive bookings</td>
@@ -269,8 +271,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- WORKSTREAM 4 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 4: EXISTING - Auto Enable Existing Providers on Bookable Profiles <span class="completion completion-low">(14% - 1/7)</span> | Aug 4 - Sept 14</td></tr>
+            <!-- General Availability: Section 4 -->
+            <tr class="section-header"><td colspan="9">General Availability: 4) Auto Enable Existing Providers <span class="completion completion-low">(14% - 1/7)</span></td></tr>
             <tr>
                 <td>4.1</td>
                 <td>As an existing ZD practice/provider, I will see a banner in product explaining to me that I have been added to a new free product by default. It is clear to me that no action is required on my end, but I can learn more if I would like</td>
@@ -355,8 +357,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- WORKSTREAM 5 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 5: EXISTING - Book from Google Connection on Post Activation To Do List <span class="completion completion-medium">(50% - 2/4)</span> | Jul 20 - Sept 14</td></tr>
+            <!-- General Availability: Section 5 -->
+            <tr class="section-header"><td colspan="9">General Availability: 5) Book from Google Connection <span class="completion completion-medium">(50% - 2/4)</span></td></tr>
             <tr>
                 <td>5.1</td>
                 <td>As a ZD user that just became active on Bookable Profiles, my practice level BFG setting is toggled to ON</td>
@@ -402,8 +404,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- WORKSTREAM 6 -->
-            <tr class="section-header"><td colspan="9">WORKSTREAM 6: ALL PROVIDERS - Update Sign Up Form to Match New Website Branding <span class="completion completion-high">(100% - 5/5)</span> | Aug 4 - Sept 14</td></tr>
+            <!-- General Availability: Section 6 -->
+            <tr class="section-header"><td colspan="9">General Availability: 6) Update Sign Up Form Branding <span class="completion completion-high">(100% - 5/5)</span></td></tr>
             <tr>
                 <td>6.1</td>
                 <td>Font</td>
@@ -420,8 +422,8 @@
             <tr><td>6.4</td><td>Button shape</td></tr>
             <tr><td>6.7</td><td>Font color</td></tr>
 
-            <!-- REQUIREMENTS V2: Welcome Modal -->
-            <tr class="section-header"><td colspan="9">REQUIREMENTS V2: Four-Step Modal for Existing Users <span class="completion completion-low">(0% - 0/7)</span> | Post Sept 14</td></tr>
+            <!-- General Availability: V2 -->
+            <tr class="section-header"><td colspan="9">General Availability: V2 - Four-Step Modal <span class="completion completion-low">(0% - 0/7)</span></td></tr>
             <tr>
                 <td>V2 1.1</td>
                 <td>An existing practice user should be able to see a 4 step modal on their homepage explaining the changes that we made to their account</td>
@@ -440,8 +442,8 @@
             <tr><td>V2 1.5</td><td>When a practice user gets to page 4 of 4 clicking done dismisses the modal</td></tr>
             <tr><td>V2 1.6</td><td>Until a practice user dismisses the modal, the page behind should be greyed out</td></tr>
 
-            <!-- REQUIREMENTS V2: Auto Enable Banner -->
-            <tr class="section-header"><td colspan="9">REQUIREMENTS V2: Auto Enable Banner for Existing <span class="completion completion-high">(100% - 5/5)</span> | Aug 4 - Sept 14</td></tr>
+            <!-- General Availability: V2 -->
+            <tr class="section-header"><td colspan="9">General Availability: V2 - Auto Enable Banner <span class="completion completion-high">(100% - 5/5)</span></td></tr>
             <tr>
                 <td>V2 2.1</td>
                 <td>A practice user should be able to see a banner on the top of their homepage explaining that their practice has been added to additional channels</td>
@@ -458,8 +460,8 @@
             <tr><td>V2 2.4</td><td>A user can dismiss this banner by doing X</td></tr>
             <tr><td>V2 2.5</td><td>When a user clicks on "check out channels" they will be redirected to the channels page</td></tr>
 
-            <!-- REQUIREMENTS V2: Other -->
-            <tr class="section-header"><td colspan="9">REQUIREMENTS V2: Other (Payment Upsell, Grow Your Practice, Payment Modal) <span class="completion completion-low">(0% - 0/3)</span> | Post Sept 14</td></tr>
+            <!-- General Availability: V2 -->
+            <tr class="section-header"><td colspan="9">General Availability: V2 - Other <span class="completion completion-low">(0% - 0/3)</span></td></tr>
             <tr>
                 <td>V2 3.1-3.5</td>
                 <td>Add Payment Method Upsell - If a user does not choose to add a payment method in the go live flow, they will see an upsell card on: Add providers flow, Performance dashboard, Channels page, Post activation page</td>
@@ -494,8 +496,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING UPDATES: ADDING A PROVIDER -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Adding a Provider (PRD 1.1-1.15) <span class="completion completion-low">(27% - 4/15)</span> | Sept 14 deadline</td></tr>
+            <!-- Onboarding: Section 1 -->
+            <tr class="section-header"><td colspan="9">Onboarding: 1. Adding a Provider <span class="completion completion-low">(27% - 4/15)</span></td></tr>
             <tr>
                 <td>1.1</td>
                 <td>The add provider screen will show the user that they can either add a single provider or add multiple at once</td>
@@ -665,8 +667,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING UPDATES: PROVIDER SIDE CAR -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Provider Side Car (PRD 2.1-2.9) <span class="completion completion-low">(22% - 2/9)</span> | Sept 14 deadline</td></tr>
+            <!-- Onboarding: Section 2 -->
+            <tr class="section-header"><td colspan="9">Onboarding: 2. Provider Side Car <span class="completion completion-low">(22% - 2/9)</span></td></tr>
             <tr>
                 <td>2.1</td>
                 <td>Show banner indicating provider was found based on NPI with NPI number reference</td>
@@ -767,8 +769,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING UPDATES: LOCATION SIDE CAR -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Location Side Car (PRD 3.1-3.9) <span class="completion completion-low">(11% - 1/9)</span> | Sept 14 deadline</td></tr>
+            <!-- Onboarding: Section 3 -->
+            <tr class="section-header"><td colspan="9">Onboarding: 3. Location Side Car <span class="completion completion-low">(11% - 1/9)</span></td></tr>
             <tr>
                 <td>3.1</td>
                 <td>A practice user should be able to choose between an office location or a virtual location</td>
@@ -869,8 +871,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING UPDATES: MERGED GRID ON PROVIDERS PAGE -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Merged Grid on Providers Page (PRD 4.1-4.13) <span class="completion completion-medium">(54% - 7/13)</span> | Sept 14 deadline</td></tr>
+            <!-- Onboarding: Section 4 -->
+            <tr class="section-header"><td colspan="9">Onboarding: 4. Merged Grid on Providers Page <span class="completion completion-medium">(54% - 7/13)</span></td></tr>
             <tr>
                 <td>4.1</td>
                 <td>View all providers irrespective of status in one consolidated view</td>
@@ -1015,8 +1017,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING UPDATES: ADD PROVIDERS TO EXISTING PRACTICES -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Add Providers to Existing Practices (PRD 5.1-5.5) <span class="completion completion-low">(0% - 0/5)</span> | Sept 14 deadline</td></tr>
+            <!-- Onboarding: Section 5 -->
+            <tr class="section-header"><td colspan="9">Onboarding: 5. Add Providers to Existing Practices <span class="completion completion-low">(0% - 0/5)</span></td></tr>
             <tr>
                 <td>5.1</td>
                 <td>Provider side car maintains all elements from requirement #2 for consistency</td>
@@ -1073,8 +1075,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- ONBOARDING: GUIDED FLOW FRAMEWORK -->
-            <tr class="section-header"><td colspan="9">ONBOARDING: Guided Flow Framework (Supporting Infra) <span class="completion completion-high">(100% - 8/8)</span> | Complete</td></tr>
+            <!-- Onboarding: Guided Flow -->
+            <tr class="section-header"><td colspan="9">Onboarding: Guided Flow Framework <span class="completion completion-high">(100% - 8/8)</span></td></tr>
             <tr>
                 <td>C1</td>
                 <td>Publish the multi-step form engine from frontend-common</td>
@@ -1147,8 +1149,8 @@
                 <td>—</td>
             </tr>
 
-            <!-- SUPPORTING TICKETS -->
-            <tr class="section-header"><td colspan="9">SUPPORTING TICKETS (Not Mapped to PRD Requirements) <span class="completion completion-low">(20% - 1/5)</span></td></tr>
+            <!-- Supporting Tickets -->
+            <tr class="section-header"><td colspan="9">Supporting Tickets (Not Mapped to PRD) <span class="completion completion-low">(20% - 1/5)</span></td></tr>
             <tr>
                 <td>—</td>
                 <td>Analytics instrumentation</td>
@@ -1415,17 +1417,22 @@
         const PRD_REPOSITIONING = 'https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit';
         const PRD_ONBOARDING = 'https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit';
 
-        // Section header to PRD heading anchor mapping (only sections with actual headings)
+        // Section header to PRD heading anchor mapping
         const SECTION_LINKS = {
-            'WORKSTREAM 1': PRD_REPOSITIONING + '#heading=h.7qaq9xuzh0sm',
-            'WORKSTREAM 2': PRD_REPOSITIONING + '#heading=h.3m1durf8yc2g',
-            'WORKSTREAM 3': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
-            'WORKSTREAM 4': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
-            'WORKSTREAM 5': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
-            'WORKSTREAM 6': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
-            'REQUIREMENTS V2': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
-            'ONBOARDING:': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
-            'SUPPORTING TICKETS': null
+            'General Availability: 1)': PRD_REPOSITIONING + '#heading=h.7qaq9xuzh0sm',
+            'General Availability: 2)': PRD_REPOSITIONING + '#heading=h.3m1durf8yc2g',
+            'General Availability: 3)': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'General Availability: 4)': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'General Availability: 5)': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'General Availability: 6)': PRD_REPOSITIONING + '#heading=h.vg51vn378a1',
+            'General Availability: V2': PRD_REPOSITIONING + '#heading=h.l4pj9d2rako5',
+            'Onboarding: 1.': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Onboarding: 2.': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Onboarding: 3.': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Onboarding: 4.': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Onboarding: 5.': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Onboarding: Guided': PRD_ONBOARDING + '#heading=h.ubj4axkhi2o7',
+            'Supporting Tickets': null
         };
 
         function linkSectionHeaders() {
@@ -1471,6 +1478,7 @@
                         sectionRows.push(rows[i]);
                         rows[i].classList.add('section-row');
                     }
+                    row.dataset.sectionRows = sectionRows.length;
 
                     // Add click handler to toggle
                     row.addEventListener('click', (e) => {
@@ -1479,6 +1487,26 @@
                         sectionRows.forEach(r => r.classList.toggle('hidden'));
                     });
                 }
+            });
+        }
+
+        function expandAll() {
+            const table = document.getElementById('mapping-table');
+            table.querySelectorAll('tr.section-header').forEach(header => {
+                header.classList.remove('collapsed');
+            });
+            table.querySelectorAll('tr.section-row').forEach(row => {
+                row.classList.remove('hidden');
+            });
+        }
+
+        function collapseAll() {
+            const table = document.getElementById('mapping-table');
+            table.querySelectorAll('tr.section-header').forEach(header => {
+                header.classList.add('collapsed');
+            });
+            table.querySelectorAll('tr.section-row').forEach(row => {
+                row.classList.add('hidden');
             });
         }
 
