@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Repositioning GA - Requirements to Tickets Mapping</title>
+    <title>Provider Growth - Requirements to Tickets Mapping</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; }
         h1 { color: #333; }
@@ -41,14 +41,28 @@
         .qa-pending { color: #fd7e14; font-style: italic; }
         .qa-complete { color: #28a745; }
         .qa-date { font-size: 12px; }
+        .editable { background-color: #fffef0; cursor: text; min-width: 60px; }
+        .editable:hover { background-color: #fff9c4; }
+        .editable:focus { outline: 2px solid #4a90d9; background-color: #fff; }
+        .design-yes { background-color: #d4edda !important; color: #155724; }
+        .design-no { background-color: #f8d7da !important; color: #721c24; }
+        .design-pending { background-color: #fff3cd !important; color: #856404; }
     </style>
 </head>
 <body>
-    <h1>Repositioning GA - PRD Requirements to Jira Tickets Mapping</h1>
+    <h1>Provider Growth - PRD Requirements to Jira Tickets Mapping</h1>
     <div class="links">
-        <strong>Epic:</strong> <a href="https://zocdoc.atlassian.net/browse/PROVGRO-7509" target="_blank">PROVGRO-7509</a> |
-        <strong>PRD:</strong> <a href="https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit" target="_blank">General Availability: Repositioning Product Requirements</a> |
-        <strong>Figma:</strong> <a href="https://www.figma.com/design/o68uqEh9YupyXfFojtr0vy/Provider-repositioning" target="_blank">Provider Repositioning Design</a>
+        <strong>Repositioning GA (Jen Vatnik):</strong>
+        <a href="https://zocdoc.atlassian.net/browse/PROVGRO-7509" target="_blank">Epic PROVGRO-7509</a> |
+        <a href="https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit" target="_blank">PRD</a> |
+        <a href="https://www.figma.com/design/o68uqEh9YupyXfFojtr0vy/Provider-repositioning" target="_blank">Figma</a>
+    </div>
+    <div class="links">
+        <strong>Onboarding Updates (Sydney Morton):</strong>
+        <a href="https://zocdoc.atlassian.net/browse/PROVGRO-7563" target="_blank">Epic PROVGRO-7563</a> |
+        <a href="https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit" target="_blank">PRD</a> |
+        <a href="https://www.figma.com/design/Hcni0ssR0NosWQDV3ILq71/Sept-E2E-Launch" target="_blank">Figma</a> |
+        <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3288989776" target="_blank">Tech Spec</a>
     </div>
     <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
     <span id="status"></span>
@@ -473,6 +487,659 @@
                 <td>—</td>
             </tr>
 
+            <!-- ONBOARDING UPDATES: ADDING A PROVIDER -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Adding a Provider (PRD 1.1-1.15) <span class="completion completion-low">(27% - 4/15)</span> | Sept 14 deadline</td></tr>
+            <tr>
+                <td>1.1</td>
+                <td>The add provider screen will show the user that they can either add a single provider or add multiple at once</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7602" target="_blank">PROVGRO-7602</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="in-progress">In Progress</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.2</td>
+                <td>A practice user should be able to add a provider by NPI or have the option to add manually</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7602" target="_blank">PROVGRO-7602</a> <span class="ticket-status status-progress">In Progress</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7670" target="_blank">PROVGRO-7670</a> <span class="ticket-status status-todo">To Do</span></div>
+                </td>
+                <td class="sprint">Sprint 348</td>
+                <td class="in-progress">In Progress</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.3</td>
+                <td>If adding manually, they need to fill in: First name, Last name, Specialty</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7670" target="_blank">PROVGRO-7670</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.4</td>
+                <td>If adding with NPI, they should be able to paste or manually type NPI number</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7602" target="_blank">PROVGRO-7602</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="in-progress">In Progress</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.5</td>
+                <td>Once a provider is added, a provider shell should be created on the add your providers page with a chevron</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7678" target="_blank">PROVGRO-7678</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 15</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.6</td>
+                <td>When clicking the chevron, the provider side car should open</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7594" target="_blank">PROVGRO-7594</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.7</td>
+                <td>When clicking "Back to home" CTA, a modal should pop up warning progress will be lost</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7605" target="_blank">PROVGRO-7605</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.8</td>
+                <td>When clicking "Continue" CTA, brought to page indicating providers are ready</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7605" target="_blank">PROVGRO-7605</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.9</td>
+                <td>When clicking "Finish" CTA, brought back to pre activation or providers page</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7605" target="_blank">PROVGRO-7605</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.10</td>
+                <td>A user cannot add a resource if it is their first provider (show error state)</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7603" target="_blank">PROVGRO-7603</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.11</td>
+                <td>When adding a resource, they should be able to specify supervising physician or independent</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7603" target="_blank">PROVGRO-7603</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.12</td>
+                <td>If resource has supervising physician, they should be able to select from list</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7603" target="_blank">PROVGRO-7603</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.13</td>
+                <td>Once supervising physician is selected, user can specify if patients book directly or through supervisor</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7603" target="_blank">PROVGRO-7603</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.14 (P1)</td>
+                <td>A user can bulk add providers in the provider profile creation step</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7680" target="_blank">PROVGRO-7680</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 15</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>1.15 (P1)</td>
+                <td>When adding a provider, status should reflect on pre activation page</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7606" target="_blank">PROVGRO-7606</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+
+            <!-- ONBOARDING UPDATES: PROVIDER SIDE CAR -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Provider Side Car (PRD 2.1-2.9) <span class="completion completion-low">(22% - 2/9)</span> | Sept 14 deadline</td></tr>
+            <tr>
+                <td>2.1</td>
+                <td>Show banner indicating provider was found based on NPI with NPI number reference</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7678" target="_blank">PROVGRO-7678</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 15</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.2</td>
+                <td>Show items needing action with count: Add profile photo, Assign location, Supervising physician</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7595" target="_blank">PROVGRO-7595</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="qa">In Review</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.3</td>
+                <td>When clicking "Add" CTA in profile photo row, add photo screen opens</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7597" target="_blank">PROVGRO-7597</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.4</td>
+                <td>When profile photo added: action item disappears, count reduced, photo appears</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7597" target="_blank">PROVGRO-7597</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.5</td>
+                <td>When clicking "Add" CTA in location row, location side car opens</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7663" target="_blank">PROVGRO-7663</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.6</td>
+                <td>When location added: action item disappears, count reduced</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7663" target="_blank">PROVGRO-7663</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.7</td>
+                <td>Show list of prefilled fields (Name, Specialties, Suffixes, Languages, Patients treated) - editable</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7595" target="_blank">PROVGRO-7595</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="qa">In Review</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.8</td>
+                <td>Allow adding optional details: Professional statement, Board certs, Memberships, Hospital affiliations</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7603" target="_blank">PROVGRO-7603</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>2.9</td>
+                <td>If information could not be prefilled, it should show up in the needs action section</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7595" target="_blank">PROVGRO-7595</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="qa">In Review</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+
+            <!-- ONBOARDING UPDATES: LOCATION SIDE CAR -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Location Side Car (PRD 3.1-3.9) <span class="completion completion-low">(11% - 1/9)</span> | Sept 14 deadline</td></tr>
+            <tr>
+                <td>3.1</td>
+                <td>A practice user should be able to choose between an office location or a virtual location</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7660" target="_blank">PROVGRO-7660</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 15</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.2</td>
+                <td>A practice user should be able to add an office location</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7661" target="_blank">PROVGRO-7661</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.3</td>
+                <td>Address search expands into: Address, Suite/Apt, State, City, Zip</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7661" target="_blank">PROVGRO-7661</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.4</td>
+                <td>A practice user should be able to add a phone number with formatting</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7661" target="_blank">PROVGRO-7661</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.5</td>
+                <td>A practice user should be able to add an email</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7661" target="_blank">PROVGRO-7661</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.6</td>
+                <td>A practice user can optionally add a location name</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7661" target="_blank">PROVGRO-7661</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.7</td>
+                <td>Clicking on add location saves and returns to provider side car</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7663" target="_blank">PROVGRO-7663</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.8</td>
+                <td>Video visit location identifier should be state, not location name</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7662" target="_blank">PROVGRO-7662</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>3.9 (P2)</td>
+                <td>Prevent duplicates on location page</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">GAP (P2)</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+
+            <!-- ONBOARDING UPDATES: MERGED GRID ON PROVIDERS PAGE -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Merged Grid on Providers Page (PRD 4.1-4.13) <span class="completion completion-medium">(54% - 7/13)</span> | Sept 14 deadline</td></tr>
+            <tr>
+                <td>4.1</td>
+                <td>View all providers irrespective of status in one consolidated view</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7618" target="_blank">PROVGRO-7618</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.2</td>
+                <td>New drafts show up at the top of the list</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7591" target="_blank">PROVGRO-7591</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.3</td>
+                <td>A practice user should be able to see a given provider's status</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7619" target="_blank">PROVGRO-7619</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.4</td>
+                <td>See when a provider profile was last edited and filter from most recent to least</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7591" target="_blank">PROVGRO-7591</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.5</td>
+                <td>Click CTA to view provider profile - opens provider side car</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7594" target="_blank">PROVGRO-7594</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.6 (P1)</td>
+                <td>View locations at which a given provider operates</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7646" target="_blank">PROVGRO-7646</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">Unassigned</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.7 (P1)</td>
+                <td>Clearly see if practice is missing information or required fields</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7595" target="_blank">PROVGRO-7595</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="qa">In Review</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.8</td>
+                <td>For live/under review provider, mandatory info in collapsable "basic information" section</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7595" target="_blank">PROVGRO-7595</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="qa">In Review</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.9</td>
+                <td>For live provider, see expandable sections for: Accepted visit reasons, Accepted insurances</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7612" target="_blank">PROVGRO-7612</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.10 (P1)</td>
+                <td>For live provider, edit VRs and insurances in side car</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Post-MVP</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.11 (P1)</td>
+                <td>For live provider, see Availability/Working Hours section</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Post-MVP</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.12 (P2)</td>
+                <td>For live provider, edit Availability/Working Hours in side car</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Post-MVP</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>4.13 (P1)</td>
+                <td>For live provider, see Channels section</td>
+                <td class="gap">—</td>
+                <td class="sprint">—</td>
+                <td class="gap">Post-MVP</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+
+            <!-- ONBOARDING UPDATES: ADD PROVIDERS TO EXISTING PRACTICES -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Add Providers to Existing Practices (PRD 5.1-5.5) <span class="completion completion-low">(0% - 0/5)</span> | Sept 14 deadline</td></tr>
+            <tr>
+                <td>5.1</td>
+                <td>Provider side car maintains all elements from requirement #2 for consistency</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7664" target="_blank">PROVGRO-7664</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>5.2</td>
+                <td>General add provider flow functions same as requirement #1</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7609" target="_blank">PROVGRO-7609</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>5.3</td>
+                <td>A user can bulk add providers to an existing practice</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7609" target="_blank">PROVGRO-7609</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>5.4</td>
+                <td>When adding to existing practice, leverage previously added location names if they exist</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7664" target="_blank">PROVGRO-7664</a></td>
+                <td class="sprint">—</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>5.5</td>
+                <td>For practice without payment method, show banner to add payment method</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7609" target="_blank">PROVGRO-7609</a></td>
+                <td class="sprint">Sprint 348</td>
+                <td class="to-do">To Do</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+            </tr>
+
+            <!-- ONBOARDING: GUIDED FLOW FRAMEWORK -->
+            <tr class="section-header"><td colspan="9">ONBOARDING: Guided Flow Framework (Supporting Infra) <span class="completion completion-high">(100% - 8/8)</span> | Complete</td></tr>
+            <tr>
+                <td>C1</td>
+                <td>Publish the multi-step form engine from frontend-common</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7599" target="_blank">PROVGRO-7599</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 10</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>C2</td>
+                <td>Shared guided-flow chrome shell</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7600" target="_blank">PROVGRO-7600</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 10</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>C2a-e</td>
+                <td>Chrome sizing, header pinning, footer skip, fluid width, loading skeleton</td>
+                <td class="ticket-list">
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7681" target="_blank">PROVGRO-7681</a> <span class="ticket-status status-closed">Closed</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7682" target="_blank">PROVGRO-7682</a> <span class="ticket-status status-closed">Closed</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7684" target="_blank">PROVGRO-7684</a> <span class="ticket-status status-closed">Closed</span></div>
+                    <div class="ticket-item"><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7685" target="_blank">PROVGRO-7685</a> <span class="ticket-status status-closed">Closed</span></div>
+                </td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 15</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>C3</td>
+                <td>Guided-flow stories + unit tests</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7601" target="_blank">PROVGRO-7601</a></td>
+                <td class="sprint">Sprint 347</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 10</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>C4</td>
+                <td>Retire the settings-only form engine</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7621" target="_blank">PROVGRO-7621</a></td>
+                <td class="sprint">—</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>E2</td>
+                <td>Retire onboarding-availability bespoke chrome</td>
+                <td><a href="https://zocdoc.atlassian.net/browse/PROVGRO-7613" target="_blank">PROVGRO-7613</a></td>
+                <td class="sprint">—</td>
+                <td class="closed">Closed</td>
+                <td class="qa-pending">Pending</td>
+                <td class="qa-date">Aug 12</td>
+                <td class="qa-date">—</td>
+                <td>—</td>
+            </tr>
+
             <!-- SUPPORTING TICKETS -->
             <tr class="section-header"><td colspan="9">SUPPORTING TICKETS (Not Mapped to PRD Requirements) <span class="completion completion-low">(20% - 1/5)</span></td></tr>
             <tr>
@@ -534,6 +1201,7 @@
     </table>
 
     <h2>Summary by Workstream</h2>
+    <h3>Repositioning GA (Jen Vatnik - PROVGRO-7509)</h3>
     <table>
         <tr><th>Workstream</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
         <tr><td>WS1: Expand BP Enrollment</td><td>1</td><td>1</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
@@ -545,7 +1213,27 @@
         <tr><td>V2: Welcome Modal</td><td>7</td><td>0</td><td>0</td><td>7</td><td class="completion-low">0%</td></tr>
         <tr><td>V2: Auto Enable Banner</td><td>5</td><td>5</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
         <tr><td>V2: Other</td><td>3</td><td>0</td><td>0</td><td>3</td><td class="completion-low">0%</td></tr>
-        <tr style="font-weight:bold;background:#e0e0e0"><td>TOTAL</td><td>46</td><td>19</td><td>7</td><td>20</td><td>41%</td></tr>
+        <tr style="font-weight:bold;background:#e0e0e0"><td>Subtotal</td><td>46</td><td>19</td><td>7</td><td>20</td><td>41%</td></tr>
+    </table>
+
+    <h3>Onboarding Updates (Sydney Morton - PROVGRO-7563)</h3>
+    <table>
+        <tr><th>Workstream</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
+        <tr><td>Adding a Provider (1.1-1.15)</td><td>15</td><td>4</td><td>3</td><td>8</td><td class="completion-low">27%</td></tr>
+        <tr><td>Provider Side Car (2.1-2.9)</td><td>9</td><td>2</td><td>3</td><td>4</td><td class="completion-low">22%</td></tr>
+        <tr><td>Location Side Car (3.1-3.9)</td><td>9</td><td>1</td><td>0</td><td>8</td><td class="completion-low">11%</td></tr>
+        <tr><td>Merged Grid (4.1-4.13)</td><td>13</td><td>7</td><td>2</td><td>4</td><td class="completion-medium">54%</td></tr>
+        <tr><td>Add to Existing Practices (5.1-5.5)</td><td>5</td><td>0</td><td>0</td><td>5</td><td class="completion-low">0%</td></tr>
+        <tr><td>Guided Flow Framework (Infra)</td><td>8</td><td>8</td><td>0</td><td>0</td><td class="completion-high">100%</td></tr>
+        <tr style="font-weight:bold;background:#e0e0e0"><td>Subtotal</td><td>59</td><td>22</td><td>8</td><td>29</td><td>37%</td></tr>
+    </table>
+
+    <h3>Combined Total</h3>
+    <table>
+        <tr><th>Project</th><th>Total Reqs</th><th>Done</th><th>In Progress/QA</th><th>To Do / Gap</th><th>% Complete</th></tr>
+        <tr><td>Repositioning GA</td><td>46</td><td>19</td><td>7</td><td>20</td><td>41%</td></tr>
+        <tr><td>Onboarding Updates</td><td>59</td><td>22</td><td>8</td><td>29</td><td>37%</td></tr>
+        <tr style="font-weight:bold;background:#2c5282;color:white"><td>GRAND TOTAL</td><td>105</td><td>41</td><td>15</td><td>49</td><td>39%</td></tr>
     </table>
 
     <script>
@@ -570,6 +1258,82 @@
                 setTimeout(() => { document.getElementById('status').innerText = ''; }, 2000);
             });
         }
+
+        // Design Sign-off editable functionality
+        const STORAGE_KEY = 'provider-growth-design-signoffs';
+
+        function getStoredSignoffs() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+            } catch { return {}; }
+        }
+
+        function saveSignoffs(data) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function applyDesignClass(cell) {
+            const val = cell.innerText.trim().toLowerCase();
+            cell.classList.remove('design-yes', 'design-no', 'design-pending');
+            if (val === 'yes' || val === '✓' || val === 'done') {
+                cell.classList.add('design-yes');
+            } else if (val === 'no' || val === '✗' || val === 'blocked') {
+                cell.classList.add('design-no');
+            } else if (val === 'pending' || val === 'in review' || val === 'waiting') {
+                cell.classList.add('design-pending');
+            }
+        }
+
+        function initEditableCells() {
+            const table = document.getElementById('mapping-table');
+            const stored = getStoredSignoffs();
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach((row, rowIndex) => {
+                if (row.classList.contains('section-header')) return;
+
+                // Find the Design Sign-off cell (last cell, column 9)
+                const cells = row.querySelectorAll('td');
+                if (cells.length < 9) return;
+
+                // Get the requirement ID from first cell for storage key
+                const reqId = cells[0]?.innerText?.trim() || `row-${rowIndex}`;
+                const designCell = cells[cells.length - 1]; // Last cell
+
+                // Skip cells that are part of a rowspan from above
+                if (!designCell || designCell.hasAttribute('data-skip')) return;
+
+                // Make editable
+                designCell.contentEditable = true;
+                designCell.classList.add('editable');
+                designCell.dataset.reqId = reqId;
+
+                // Load stored value
+                if (stored[reqId]) {
+                    designCell.innerText = stored[reqId];
+                }
+                applyDesignClass(designCell);
+
+                // Save on blur
+                designCell.addEventListener('blur', function() {
+                    const data = getStoredSignoffs();
+                    data[this.dataset.reqId] = this.innerText.trim();
+                    saveSignoffs(data);
+                    applyDesignClass(this);
+                });
+
+                // Save on Enter key
+                designCell.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.blur();
+                    }
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initEditableCells);
     </script>
 </body>
 </html>
