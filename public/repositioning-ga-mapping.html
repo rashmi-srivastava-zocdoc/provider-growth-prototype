@@ -65,6 +65,7 @@
         <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3288989776" target="_blank">Tech Spec</a>
     </div>
     <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
+    <button class="copy-btn" onclick="exportSignoffs()" style="background:#28a745">Export Sign-offs</button>
     <span id="status"></span>
 
     <table id="mapping-table">
@@ -1262,10 +1263,26 @@
         // Design Sign-off editable functionality
         const STORAGE_KEY = 'provider-growth-design-signoffs';
 
+        // Embedded sign-off values (committed to GitHub)
+        const GITHUB_SIGNOFFS = {};
+
         function getStoredSignoffs() {
             try {
-                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-            } catch { return {}; }
+                const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+                // Merge: localStorage overrides GitHub defaults
+                return { ...GITHUB_SIGNOFFS, ...local };
+            } catch { return { ...GITHUB_SIGNOFFS }; }
+        }
+
+        function exportSignoffs() {
+            const data = getStoredSignoffs();
+            const json = JSON.stringify(data, null, 2);
+            navigator.clipboard.writeText(json).then(() => {
+                document.getElementById('status').innerText = 'Sign-offs copied! Paste to Claude to save to GitHub.';
+                setTimeout(() => { document.getElementById('status').innerText = ''; }, 4000);
+            });
+            console.log('Sign-off data for GitHub commit:');
+            console.log(json);
         }
 
         function saveSignoffs(data) {
