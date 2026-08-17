@@ -47,6 +47,8 @@
         .design-yes { background-color: #d4edda !important; color: #155724; }
         .design-no { background-color: #f8d7da !important; color: #721c24; }
         .design-pending { background-color: #fff3cd !important; color: #856404; }
+        td:first-child a { font-weight: 600; }
+        td:first-child a::after { content: ' ↗'; font-size: 10px; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -1405,9 +1407,48 @@
             });
         }
 
+        // PRD URLs
+        const PRD_REPOSITIONING = 'https://docs.google.com/document/d/1gi65AiyEzTi-vTWkLjFKtYKR4VyZaHj3T8wbe85etZc/edit';
+        const PRD_ONBOARDING = 'https://docs.google.com/document/d/1nhosE68YD__WS3ZialVCi8e3iSbzndWJA62RqhDgqCs/edit';
+
+        function linkPrdRequirements() {
+            const table = document.getElementById('mapping-table');
+            const rows = table.querySelectorAll('tbody tr');
+            let currentPrd = PRD_REPOSITIONING;
+
+            rows.forEach(row => {
+                // Check section headers to determine which PRD
+                if (row.classList.contains('section-header')) {
+                    const text = row.innerText;
+                    if (text.includes('ONBOARDING:')) {
+                        currentPrd = PRD_ONBOARDING;
+                    } else if (text.includes('WORKSTREAM') || text.includes('REQUIREMENTS V2') || text.includes('SUPPORTING')) {
+                        currentPrd = PRD_REPOSITIONING;
+                    }
+                    return;
+                }
+
+                // Link the first cell (PRD Req) if it has a requirement ID
+                const firstCell = row.querySelector('td:first-child');
+                if (!firstCell) return;
+
+                const reqId = firstCell.innerText.trim();
+                if (reqId && reqId !== '—' && !firstCell.querySelector('a')) {
+                    const link = document.createElement('a');
+                    link.href = currentPrd;
+                    link.target = '_blank';
+                    link.innerText = reqId;
+                    link.title = 'View in PRD';
+                    firstCell.innerText = '';
+                    firstCell.appendChild(link);
+                }
+            });
+        }
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async () => {
             await loadFromGitHub();
+            linkPrdRequirements();
             initEditableCells();
         });
     </script>
