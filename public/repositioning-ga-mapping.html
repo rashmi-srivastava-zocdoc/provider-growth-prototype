@@ -65,7 +65,7 @@
         <a href="https://zocdoc.atlassian.net/wiki/spaces/TECH/pages/3288989776" target="_blank">Tech Spec</a>
     </div>
     <button class="copy-btn" onclick="copyTable()">Copy Table to Clipboard</button>
-    <button class="copy-btn" onclick="exportSignoffs()" style="background:#28a745">Export Sign-offs</button>
+    <button class="copy-btn" onclick="saveToGitHub()" style="background:#28a745">Save Sign-offs</button>
     <span id="status"></span>
 
     <table id="mapping-table">
@@ -1263,26 +1263,82 @@
         // Design Sign-off editable functionality
         const STORAGE_KEY = 'provider-growth-design-signoffs';
 
-        // Embedded sign-off values (committed to GitHub)
+        // Embedded sign-off values (committed to GitHub - updated by Claude)
         const GITHUB_SIGNOFFS = {};
+
+        // GitHub repo info for saving
+        const GITHUB_REPO = 'rashmi-srivastava-zocdoc/provider-growth-prototype';
+        const GITHUB_FILE = 'public/signoffs.json';
 
         function getStoredSignoffs() {
             try {
                 const local = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-                // Merge: localStorage overrides GitHub defaults
                 return { ...GITHUB_SIGNOFFS, ...local };
             } catch { return { ...GITHUB_SIGNOFFS }; }
         }
 
-        function exportSignoffs() {
+        const TOKEN_KEY = 'github-token-provider-growth';
+
+        async function loadFromGitHub() {
+            try {
+                const resp = await fetch('signoffs.json?t=' + Date.now());
+                if (resp.ok) {
+                    const data = await resp.json();
+                    Object.assign(GITHUB_SIGNOFFS, data);
+                }
+            } catch (e) { console.log('Could not load signoffs.json'); }
+        }
+
+        async function saveToGitHub() {
+            let token = localStorage.getItem(TOKEN_KEY);
+            if (!token) {
+                token = prompt('Enter GitHub personal access token (with repo scope).\nCreate one at: github.com/settings/tokens\n\nThis is saved locally and only used to update signoffs.json');
+                if (!token) return;
+                localStorage.setItem(TOKEN_KEY, token);
+            }
+
             const data = getStoredSignoffs();
-            const json = JSON.stringify(data, null, 2);
-            navigator.clipboard.writeText(json).then(() => {
-                document.getElementById('status').innerText = 'Sign-offs copied! Paste to Claude to save to GitHub.';
-                setTimeout(() => { document.getElementById('status').innerText = ''; }, 4000);
-            });
-            console.log('Sign-off data for GitHub commit:');
-            console.log(json);
+            const content = btoa(JSON.stringify(data, null, 2));
+
+            document.getElementById('status').innerText = 'Saving...';
+
+            try {
+                // Get current file SHA
+                const getResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+                    headers: { 'Authorization': `token ${token}` }
+                });
+                const fileData = await getResp.json();
+
+                // Update file
+                const putResp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Update design sign-offs',
+                        content: content,
+                        sha: fileData.sha
+                    })
+                });
+
+                if (putResp.ok) {
+                    document.getElementById('status').innerText = 'Saved to GitHub!';
+                    localStorage.removeItem(STORAGE_KEY); // Clear local cache
+                } else {
+                    const err = await putResp.json();
+                    if (err.message?.includes('Bad credentials')) {
+                        localStorage.removeItem(TOKEN_KEY);
+                        document.getElementById('status').innerText = 'Invalid token - try again';
+                    } else {
+                        document.getElementById('status').innerText = 'Error: ' + err.message;
+                    }
+                }
+            } catch (e) {
+                document.getElementById('status').innerText = 'Error: ' + e.message;
+            }
+            setTimeout(() => { document.getElementById('status').innerText = ''; }, 3000);
         }
 
         function saveSignoffs(data) {
@@ -1350,7 +1406,10 @@
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', initEditableCells);
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadFromGitHub();
+            initEditableCells();
+        });
     </script>
 </body>
 </html>
